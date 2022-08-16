@@ -1,0 +1,9 @@
+.about__list {
+  width: 1140px;
+  margin: 70px 0 110px;
+  padding: 0;
+  display: flex;
+  justify-content:space-between; 
+  list-style: none;
+  counter-reset: list;
+}

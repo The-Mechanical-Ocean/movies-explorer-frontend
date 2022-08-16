@@ -1,0 +1,12 @@
+.page__logo {
+  background-image: url(../../../images/page__logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 38px;
+  height: 38px;
+  margin-left: 70px;
+}
+@media screen and (max-width: 480px) {
+  .page__logo {
+  }
+}

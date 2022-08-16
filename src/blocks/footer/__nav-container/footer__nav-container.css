@@ -1,0 +1,8 @@
+.footer__nav-container {
+  width: 1140px;
+  height: 56px;
+  border-top: 1px solid #424242;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,8 @@
+.popup__span-link{
+  color: #4285F4;
+  text-decoration: none;
+}
+
+.popup__span-link:hover{
+  opacity: 0.6;
+}

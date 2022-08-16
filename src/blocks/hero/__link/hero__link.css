@@ -1,0 +1,19 @@
+.hero__link {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 36px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+  z-index: 1;
+  background-color: #303030;
+}
+.hero__link:hover {
+  opacity: 0.6;
+}

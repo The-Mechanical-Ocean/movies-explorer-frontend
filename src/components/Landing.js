@@ -23,7 +23,7 @@ function Landing (props) {
           </div>
         </section>
         <section className="about">
-        <h3 class="about__itle">О проекте</h3>
+        <h3 class="about__title">О проекте</h3>
         <ul class="about__list">
           <li class="about__cell">
             <h4 class="about__cell-heading">Дипломный проект включал 5 этапов</h4>
@@ -34,7 +34,27 @@ function Landing (props) {
             <p class="about__cell-text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
           </li>
         </ul>  
-        
+        <div className="about__duration-study">
+          <div className='about__duration-study-cell-first'><p className='about__duration-study-text-first'>1 неделя</p></div>
+          <div className='about__duration-study-cell-second'><p className='about__duration-study-text-first'>4 недели</p></div>
+          <div className='about__duration-study-cell-first'><p className='about__duration-study-text-second'>Back-end</p></div>
+          <div className='about__duration-study-cell-second'><p className='about__duration-study-text-second'>Front-end</p></div>
+        </div>
+        </section>
+        <section className='tech'>
+            <h3 class="tech__title">Технологии</h3>
+            <h2 className='tech__big-title'>7 технологий</h2>
+            <p className='tech__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+            <nav className='tech__nav'>
+              <Link className='tech__link' to='#'>HTML</Link>
+              <Link className='tech__link' to='#'>CSS</Link>
+              <Link className='tech__link' to='#'>JS</Link>
+              <Link className='tech__link' to='#'>React</Link>
+              <Link className='tech__link' to='#'>Git</Link>
+              <Link className='tech__link' to='#'>Express.js</Link>
+              <Link className='tech__link' to='#'>MongoDB</Link>
+            </nav>
+          
         </section>
       </main>
       <Footer />

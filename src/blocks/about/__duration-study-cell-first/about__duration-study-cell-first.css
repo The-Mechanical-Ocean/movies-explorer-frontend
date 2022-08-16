@@ -1,0 +1,9 @@
+.about__duration-study-cell-first {
+  width: 228px;
+  height: 36px;
+  text-align: center;
+}
+
+.about__duration-study-cell-first:nth-child(1) {
+  background-color: #3DDC84;
+}

@@ -1,0 +1,10 @@
+.hero__container {
+  width: 1200px;
+  height: 493px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #272727;
+}

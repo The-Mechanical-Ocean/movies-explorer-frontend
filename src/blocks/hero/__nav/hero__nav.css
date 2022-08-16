@@ -1,0 +1,6 @@
+.hero__nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+  gap: 10px;
+}
