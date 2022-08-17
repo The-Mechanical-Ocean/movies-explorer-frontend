@@ -1,0 +1,15 @@
+.student__foto {
+  background-image: url(../../../images/student__foto.jpg);
+  background-size:cover;
+  background-repeat: no-repeat;
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+/* @media screen and (max-width: 480px) {
+  .student__foto {
+  }
+} */

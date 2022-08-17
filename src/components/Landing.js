@@ -54,7 +54,36 @@ function Landing (props) {
               <Link className='tech__link' to='#'>Express.js</Link>
               <Link className='tech__link' to='#'>MongoDB</Link>
             </nav>
-          
+        </section>
+        <section className='student'>
+          <div className='student__container'>
+            <h3 class="student__title">Студент</h3>
+            <p className='student__name'>Александр</p>
+            <p className='student__about'>Фронтенд-разработчик, 33 года</p>
+            <p className='student__description'>Я родился в Ростове-на-Дону, закончил факультет технических средств вычислительной техники и компьютерных сетей РГКРИПТ, и позже 
+              факультет инфромационныч систем и технологий университета ДГТУ. У меня есть прекрасная жена и дочь, а так же сын. 
+              Я люблю слушать музыку, я бы сказал - обожаю:) и играю на барабанах с 14 лет, а ещё увлекаюсь кино, книгами и хорошими играми. 
+              Недавно начал кодить. С 2012 года работаю в компании «НТЦ ЮРИОН» сначала в должности инженера-разробочика, а на данный момент в должности начальника отдела. 
+              После того, как прошёл курс по веб-разработке, начал заниматься понемногу фриланс-заказами и планирую полностью сменить профессиональную деятельность.</p>
+            <div className='student__links'>
+              <Link className='student__link' to='#'>Facebook</Link>
+              <Link className='student__link' to='https://github.com/The-Mechanical-Ocean'>Github</Link>
+            </div>
+            <div className='student__foto'></div>  
+          </div>
+          <p className='student__portfolio'>Портфолио</p>
+          <div className='student__portfolio-link-container'>
+            <Link className='student__portfolio-link' to='#'>Статичный сайт</Link>
+            <div className='student__portfolio-link-image'></div>
+          </div>  
+          <div className='student__portfolio-link-container'>
+            <Link className='student__portfolio-link' to='#'>Адаптивный сайт</Link>
+            <div className='student__portfolio-link-image'></div>
+          </div>  
+          <div className='student__portfolio-link-container'>
+            <Link className='student__portfolio-link' to='#'>Одностраничное приложение</Link>
+            <div className='student__portfolio-link-image'></div>
+          </div>  
         </section>
       </main>
       <Footer />

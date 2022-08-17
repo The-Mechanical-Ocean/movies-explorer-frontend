@@ -1,0 +1,16 @@
+.student__portfolio-link-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-bottom: 23px;
+  width: 1140px;
+  border-bottom: 1px solid #424242;
+}
+
+.student__portfolio-link-container:first-of-type {
+  margin-top: 50px;
+}
+
+.student__portfolio-link-container:last-of-type {
+  border-bottom: none;
+}

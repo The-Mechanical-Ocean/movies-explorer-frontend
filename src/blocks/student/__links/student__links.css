@@ -1,0 +1,12 @@
+.student__links {
+  width: 132px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+@media screen and (max-width: 480px) {
+  .student__links {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,9 @@
+.student__container {
+  position: relative;
+  width: 1140px;
+  margin-top: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+}
