@@ -1,7 +1,9 @@
-.tech__nav {
+.tech__ul {
+  padding: 0;
   margin: 100px auto;
   display: flex;
-  justify-content: space-between;
+  list-style: none;
+  counter-reset: list;
   background-color: transparent;
   gap: 10px;
 }

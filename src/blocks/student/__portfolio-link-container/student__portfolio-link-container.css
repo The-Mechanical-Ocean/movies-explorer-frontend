@@ -1,13 +1,13 @@
 .student__portfolio-link-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 15px;
   padding-bottom: 23px;
   width: 1140px;
   border-bottom: 1px solid #424242;
 }
 
-.student__portfolio-link-container:first-of-type {
+.student__portfolio-link-container:nth-child(3) {
   margin-top: 50px;
 }
 

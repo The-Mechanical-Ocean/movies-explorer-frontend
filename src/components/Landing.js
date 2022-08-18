@@ -16,13 +16,13 @@ function Landing (props) {
           <div className='hero__container'>
             <h1 className='hero__title'>Учебный проект студента факультета Веб-разработки.</h1>
             <nav className='hero__nav'>
-              <Link className='hero__link' to='#'>О проекте</Link>
-              <Link className='hero__link' to='#'>Технологии</Link>
-              <Link className='hero__link' to='#'>Студент</Link>
+              <a className='hero__link' href='#about'>О проекте</a>
+              <a className='hero__link' href='#tech'>Технологии</a>
+              <a className='hero__link' href='#student'>Студент</a>
             </nav>
           </div>
         </section>
-        <section className="about">
+        <section className="about" id='about'>
         <h3 class="about__title">О проекте</h3>
         <ul class="about__list">
           <li class="about__cell">
@@ -41,21 +41,21 @@ function Landing (props) {
           <div className='about__duration-study-cell-second'><p className='about__duration-study-text-second'>Front-end</p></div>
         </div>
         </section>
-        <section className='tech'>
+        <section className='tech' id='tech'>
             <h3 class="tech__title">Технологии</h3>
-            <h2 className='tech__big-title'>7 технологий</h2>
+            <p className='tech__big-title'>7 технологий</p>
             <p className='tech__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-            <nav className='tech__nav'>
-              <Link className='tech__link' to='#'>HTML</Link>
-              <Link className='tech__link' to='#'>CSS</Link>
-              <Link className='tech__link' to='#'>JS</Link>
-              <Link className='tech__link' to='#'>React</Link>
-              <Link className='tech__link' to='#'>Git</Link>
-              <Link className='tech__link' to='#'>Express.js</Link>
-              <Link className='tech__link' to='#'>MongoDB</Link>
-            </nav>
+            <ul className='tech__ul'>
+              <li className='tech__li'><p className='tech__li-text'>HTML</p></li>
+              <li className='tech__li'><p className='tech__li-text'>CSS</p></li>
+              <li className='tech__li'><p className='tech__li-text'>JS</p></li>
+              <li className='tech__li'><p className='tech__li-text'>React</p></li>
+              <li className='tech__li'><p className='tech__li-text'>Git</p></li>
+              <li className='tech__li'><p className='tech__li-text'>Express.js</p></li>
+              <li className='tech__li'><p className='tech__li-text'>mongoDB</p></li>
+            </ul>
         </section>
-        <section className='student'>
+        <section className='student' id='student'>
           <div className='student__container'>
             <h3 class="student__title">Студент</h3>
             <p className='student__name'>Александр</p>
@@ -66,23 +66,23 @@ function Landing (props) {
               Недавно начал кодить. С 2012 года работаю в компании «НТЦ ЮРИОН» сначала в должности инженера-разробочика, а на данный момент в должности начальника отдела. 
               После того, как прошёл курс по веб-разработке, начал заниматься понемногу фриланс-заказами и планирую полностью сменить профессиональную деятельность.</p>
             <div className='student__links'>
-              <Link className='student__link' to='#'>Facebook</Link>
-              <Link className='student__link' to='https://github.com/The-Mechanical-Ocean'>Github</Link>
+              <a className='student__link' href='https://facebook.com'>Facebook</a>
+              <a className='student__link' href='https://github.com/The-Mechanical-Ocean'  target='_ blank'>Github</a>
             </div>
             <div className='student__foto'></div>  
           </div>
           <p className='student__portfolio'>Портфолио</p>
           <div className='student__portfolio-link-container'>
-            <Link className='student__portfolio-link' to='#'>Статичный сайт</Link>
-            <div className='student__portfolio-link-image'></div>
+            <a className='student__portfolio-link' href='https://the-mechanical-ocean.github.io/how-to-learn/index.html' target='_ blank'>Статичный сайт</a>
+            <a href='https://the-mechanical-ocean.github.io/how-to-learn/' target='_ blank'><div className='student__portfolio-link-image'></div></a>
           </div>  
           <div className='student__portfolio-link-container'>
-            <Link className='student__portfolio-link' to='#'>Адаптивный сайт</Link>
-            <div className='student__portfolio-link-image'></div>
+            <a className='student__portfolio-link' href='https://the-mechanical-ocean.github.io/russian-travel/index.html' target='_ blank'>Адаптивный сайт</a>
+            <a href='https://the-mechanical-ocean.github.io/russian-travel/index.html' target='_ blank'><div className='student__portfolio-link-image'></div></a>
           </div>  
           <div className='student__portfolio-link-container'>
-            <Link className='student__portfolio-link' to='#'>Одностраничное приложение</Link>
-            <div className='student__portfolio-link-image'></div>
+            <a className='student__portfolio-link' href='https://the-mechanical-ocean.nomoredomains.sbs' target='_ blank'>Одностраничное приложение</a>
+            <a href='https://the-mechanical-ocean.nomoredomains.sbs' target='_ blank'><div className='student__portfolio-link-image'></div></a>
           </div>  
         </section>
       </main>

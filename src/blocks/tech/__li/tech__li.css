@@ -1,0 +1,9 @@
+.tech__li {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 60px;
+  background-color: #303030;
+}
