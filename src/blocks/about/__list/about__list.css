@@ -1,9 +1,26 @@
 .about__list {
-  width: 1140px;
-  margin: 70px 0 110px;
+  max-width: 1140px;
+  margin: 70px auto 110px;
   padding: 0;
   display: flex;
   justify-content:space-between; 
   list-style: none;
   counter-reset: list;
+  gap: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  .about__list {
+    max-width: 668px;
+    margin-bottom: 92px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .about__list {
+    max-width: 284px;
+    margin: 60px 0 60px;
+    flex-wrap: wrap;
+    gap: 56px;
+  }
 }

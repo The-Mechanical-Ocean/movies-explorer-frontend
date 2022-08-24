@@ -5,13 +5,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 1280px;
+  max-width: 1280px;
   height: 172px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 900px) {
   .footer {
     max-width: 560px;
-    margin-top: 48px;
+    /* margin-top: 48px; */
   }
 }
 @media screen and (max-width: 620px) {

@@ -7,3 +7,16 @@
 .about__duration-study-cell-first:nth-child(1) {
   background-color: #3DDC84;
 }
+
+@media screen and (max-width: 900px) {
+  .about__duration-study-cell-first {
+    width: 140px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .about__duration-study-cell-first {
+    width: 100px;
+    height: 35px;
+  }
+}

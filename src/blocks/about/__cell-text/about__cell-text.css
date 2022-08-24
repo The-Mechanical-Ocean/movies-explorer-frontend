@@ -1,10 +1,25 @@
 .about__cell-text {
   margin: 26px 0 0 ;
   text-align: left;
-  width: 550px;
+  max-width: 550px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #FFFFFF;
+}
+
+@media screen and (max-width: 900px) {
+  .about__cell-text {
+    max-width: 319px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .about__cell-text {
+    max-width: 284px;
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
 }

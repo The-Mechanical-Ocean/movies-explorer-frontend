@@ -8,3 +8,19 @@
   line-height: 56px;
   color: #ffffff;
 }
+
+@media screen and (max-width: 900px) {
+  .tech__big-title {
+    width: 600px;
+    font-size: 39px;
+    line-height: 52px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .tech__big-title {
+    width: 292px;
+    font-size: 29px;
+    line-height: 36px;
+  }
+}

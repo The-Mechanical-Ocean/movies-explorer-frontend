@@ -1,7 +1,19 @@
 .about__duration-study {
   width: 1140px;
-  margin-bottom: 100px;
+  margin: 0 auto 100px;
   display: flex;
-  flex-wrap: wrap;
-  background-color: transparent;
+}
+
+@media screen and (max-width: 900px) {
+  .about__duration-study {
+    max-width: 668px;
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .about__duration-study {
+    max-width: 284px;
+    margin-bottom: 70px;
+  }
 }

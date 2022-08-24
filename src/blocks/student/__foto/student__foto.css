@@ -9,7 +9,20 @@
   right: 0;
   bottom: 0;
 }
-/* @media screen and (max-width: 480px) {
+
+@media screen and (max-width: 900px) {
   .student__foto {
+    width: 255px;
+    height: 307px;
+    bottom: 65px;
   }
-} */
+}
+
+@media screen and (max-width: 620px) {
+  .student__foto {
+    position:static;
+    width: 292px;
+    height: 352;
+    margin: 60px auto 0;
+  }
+}

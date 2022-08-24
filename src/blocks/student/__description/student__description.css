@@ -7,4 +7,35 @@
   font-size: 14px;
   line-height: 22px;
   color: #FFFFFF;
+  overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 1080px) {
+  .student__description {
+    width: 425px;
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .student__description {
+    width: 292px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .student__description {
+    width: 205px;
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .student__description {
+    width: 295px;
+    margin: 20px auto 0;
+  }
 }

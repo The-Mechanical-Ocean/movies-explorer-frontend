@@ -7,3 +7,10 @@
   height: 60px;
   background-color: #303030;
 }
+
+@media screen and (max-width: 900px) {
+  .tech__li {
+    width: 84px;
+    height: 57px;
+  }
+}

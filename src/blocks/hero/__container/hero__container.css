@@ -8,3 +8,17 @@
   align-items: center;
   background-color: #272727;
 }
+
+@media screen and (max-width: 900px) {
+  .hero__container {
+    max-width: 728px;
+    height: 834px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .hero__container {
+    max-width: 292px;
+    height: 586px;
+  }
+}

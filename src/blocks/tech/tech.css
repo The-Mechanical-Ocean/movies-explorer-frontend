@@ -1,7 +1,26 @@
 .tech {
-  width: 1280px;
+  overflow: hidden;
+  /* position: relative; */
+  max-width: 1280px;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #272727;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+@media screen and (max-width: 900px) {
+  .tech {
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .tech {
+    max-width: 320px;
+  }
+}
+
+

@@ -1,10 +1,24 @@
 .about__cell-heading {
   margin: 0;
   text-align: left;
-  width: 550px;
+  max-width: 550px;
   font-style: normal;
   font-weight: 400;
   font-size: 18.5px;
   line-height: 24px;
   color: #FFFFFF;
+}
+
+@media screen and (max-width: 900px) {
+  .about__cell-heading {
+    max-width: 319px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .about__cell-heading {
+    max-width: 284px;
+    font-size: 17.5px;
+    line-height: 21px;
+  }
 }

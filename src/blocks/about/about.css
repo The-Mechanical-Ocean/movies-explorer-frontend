@@ -1,6 +1,9 @@
 .about {
-  width: 1280px;
+  max-width: 1280px;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  outline: 1px solid red;
   align-items: center;
 }

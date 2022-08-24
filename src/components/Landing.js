@@ -23,7 +23,7 @@ function Landing (props) {
           </div>
         </section>
         <section className="about" id='about'>
-        <h3 class="about__title">О проекте</h3>
+        <div className='about__title-container'><h3 class="about__title">О проекте</h3></div>
         <ul class="about__list">
           <li class="about__cell">
             <h4 class="about__cell-heading">Дипломный проект включал 5 этапов</h4>
@@ -35,14 +35,18 @@ function Landing (props) {
           </li>
         </ul>  
         <div className="about__duration-study">
-          <div className='about__duration-study-cell-first'><p className='about__duration-study-text-first'>1 неделя</p></div>
-          <div className='about__duration-study-cell-second'><p className='about__duration-study-text-first'>4 недели</p></div>
-          <div className='about__duration-study-cell-first'><p className='about__duration-study-text-second'>Back-end</p></div>
-          <div className='about__duration-study-cell-second'><p className='about__duration-study-text-second'>Front-end</p></div>
+          <div className='about__duration-study-column'>
+            <div className='about__duration-study-cell-first'><p className='about__duration-study-text-first'>1 неделя</p></div>
+            <div className='about__duration-study-cell-first'><p className='about__duration-study-text-second'>Back-end</p></div>
+          </div>
+          <div className='about__duration-study-column'>
+            <div className='about__duration-study-cell-second'><p className='about__duration-study-text-first'>4 недели</p></div>
+            <div className='about__duration-study-cell-second'><p className='about__duration-study-text-second'>Front-end</p></div>
+          </div>
         </div>
         </section>
         <section className='tech' id='tech'>
-            <h3 class="tech__title">Технологии</h3>
+        <div className='tech__title-container'><h3 class="tech__title">Технологии</h3></div>
             <p className='tech__big-title'>7 технологий</p>
             <p className='tech__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
             <ul className='tech__ul'>
@@ -57,7 +61,8 @@ function Landing (props) {
         </section>
         <section className='student' id='student'>
           <div className='student__container'>
-            <h3 class="student__title">Студент</h3>
+          <div className='student__title-container'><h3 class="student__title">Студент</h3></div>
+          <div className='student__foto'></div>
             <p className='student__name'>Александр</p>
             <p className='student__about'>Фронтенд-разработчик, 33 года</p>
             <p className='student__description'>Я родился в Ростове-на-Дону, закончил факультет технических средств вычислительной техники и компьютерных сетей РГКРИПТ, и позже 
@@ -68,8 +73,7 @@ function Landing (props) {
             <div className='student__links'>
               <a className='student__link' href='https://facebook.com'>Facebook</a>
               <a className='student__link' href='https://github.com/The-Mechanical-Ocean'  target='_ blank'>Github</a>
-            </div>
-            <div className='student__foto'></div>  
+            </div>  
           </div>
           <p className='student__portfolio'>Портфолио</p>
           <div className='student__portfolio-link-container'>

@@ -4,6 +4,20 @@
   text-align: center;
 }
 
-.about__duration-study-cell-second:nth-child(2) {
+.about__duration-study-cell-second:nth-child(1) {
   background-color: #303030;
+  /* color: aliceblue; */
+}
+
+@media screen and (max-width: 900px) {
+  .about__duration-study-cell-second {
+    width: 528px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .about__duration-study-cell-second {
+    width: 184px;
+    height: 35px;
+  }
 }

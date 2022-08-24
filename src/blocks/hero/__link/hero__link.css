@@ -17,3 +17,12 @@
 .hero__link:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 620px) {
+  .hero__link {
+    width: 82px;
+    height: 26px;
+    border-radius: 6px;
+    font-size: 10px;
+  }
+}
