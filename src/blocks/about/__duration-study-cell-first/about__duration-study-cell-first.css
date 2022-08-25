@@ -14,7 +14,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .about__duration-study-cell-first {
     width: 100px;
     height: 35px;

@@ -7,7 +7,7 @@
   color: #8B8B8B;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .about__duration-study-text-second {
     font-size: 11px;
     line-height: 12px;

@@ -6,7 +6,7 @@
   margin-top: 47px;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__links {
     width: 292px;
     margin: 40px auto 0;

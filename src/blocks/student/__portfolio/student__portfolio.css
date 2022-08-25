@@ -14,7 +14,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__portfolio {
     margin: 68px auto 0;
     width: 292px;

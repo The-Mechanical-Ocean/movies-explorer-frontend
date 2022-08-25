@@ -5,16 +5,14 @@
   list-style: none;
   counter-reset: list;
   gap: 10px;
-  outline: 1px solid red;
 }
 @media screen and (max-width: 900px) {
   .tech__ul {
     margin: 85px 0 90px;
-    gap: 8px;
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .tech__ul {
     flex-wrap: wrap;
     width: 178px;

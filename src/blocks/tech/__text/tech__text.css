@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .tech__text {
     width: 284px;
     font-size: 11px;

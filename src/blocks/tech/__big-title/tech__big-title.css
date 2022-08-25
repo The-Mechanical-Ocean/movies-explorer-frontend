@@ -17,7 +17,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .tech__big-title {
     width: 292px;
     font-size: 29px;

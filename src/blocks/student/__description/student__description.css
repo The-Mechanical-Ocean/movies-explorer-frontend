@@ -33,7 +33,7 @@
     line-height: 16px;
   }
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__description {
     width: 295px;
     margin: 20px auto 0;

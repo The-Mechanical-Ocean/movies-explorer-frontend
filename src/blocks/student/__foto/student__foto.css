@@ -18,7 +18,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__foto {
     position:static;
     width: 292px;

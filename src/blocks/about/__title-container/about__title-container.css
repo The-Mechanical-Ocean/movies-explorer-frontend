@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .about__title-container {
     width: 284px;
     margin-top: 70px;

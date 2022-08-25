@@ -4,7 +4,6 @@
   text-align: left;
   width: 1140px;
   border-bottom: 1px solid #DADADA;
-  outline: 1px solid red;
 }
 
 @media screen and (max-width: 900px) {
@@ -14,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .tech__title-container {
     width: 284px;
     margin-top: 70px;

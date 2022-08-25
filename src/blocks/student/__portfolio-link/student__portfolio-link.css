@@ -1,4 +1,4 @@
-.student__portfolio-link {  
+.student__portfolio-link { 
   text-decoration: none;
   font-style: normal;
   font-weight: 400;
@@ -10,7 +10,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__portfolio-link {
     font-size: 17px;
     line-height: 27px;

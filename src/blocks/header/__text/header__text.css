@@ -7,7 +7,7 @@
   color: #fff;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .header__text {
     font-size: 10px;
   }

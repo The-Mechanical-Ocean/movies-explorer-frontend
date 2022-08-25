@@ -11,13 +11,13 @@
 
 @media screen and (max-width: 900px) {
   .hero__title {
-    width: 680px;
+    width: 660px;
     font-size: 39px;
     line-height: 52px;
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .hero__title {
     width: 292px;
     font-size: 28px;

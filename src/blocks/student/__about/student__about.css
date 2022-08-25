@@ -18,7 +18,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__about {
     width: 292px;
     margin: 20px auto 0;

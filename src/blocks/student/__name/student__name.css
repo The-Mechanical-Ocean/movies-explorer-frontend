@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 640px) {
   .student__name {
     max-width: 292px;
     font-size: 30px;
