@@ -41,7 +41,7 @@ function Login(props) {
       <span className="popup__input-error popup__input-error_active" id="password-error"></span>
       <button className="popup__button-save popup__button-save_for_entry popup__button-save_for_login" type="submit">Войти</button>
       <p className={"popup__span-text"}>Еще не зарегистрированны? 
-        <Link to={'sign-up'} className={"popup__span-link"}> Регистрация</Link>
+        <Link to={'sign-up'} className={"popup__span-link"}>Регистрация</Link>
       </p>
     </EntryForm>
   )  

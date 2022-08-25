@@ -175,8 +175,8 @@ function App() {
 
   return (
     <div className="page">
-      <Landing/>
-      {/* <Login/> */}
+      {/* <Landing/> */}
+      <Login/>
       {/* <Register/> */}
         
         
