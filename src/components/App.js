@@ -14,6 +14,8 @@ import Landing from './Landing';
 // import ImagePopup from './ImagePopup';
 import Login from './Login';
 import Register from './Register';
+import PageNotFound from './PageNotFound/PageNotFound';
+import Preloader from './Preloader/Preloader';
 // import InfoTooltip from "./InfoTooltip";
 // import {register, authorize, checkToken} from '../utils/auth';
 // import {api} from '../utils/api.js';
@@ -175,9 +177,11 @@ function App() {
 
   return (
     <div className="page">
-      {/* <Landing/> */}
-      <Login/>
+      <Landing/>
+      {/* <Login/> */}
       {/* <Register/> */}
+      {/* <PageNotFound/> */}
+      {/* <Preloader /> */}
         
         
           

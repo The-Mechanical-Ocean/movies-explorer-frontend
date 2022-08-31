@@ -10,19 +10,9 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: #FFFFFF;
   cursor: pointer;
 }
 .popup__button-save:hover {
   opacity: 0.8;
   transition: opacity 0.5s ease 0s;
-}
-@media screen and (max-width: 480px) {
-  .popup__button-save {
-    font-size: 12px;
-    line-height: 15px;
-    width: 260px;
-    height: 46px;
-    margin-top: 179px;
-  }
 }

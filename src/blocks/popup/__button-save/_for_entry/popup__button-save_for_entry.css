@@ -1,5 +1,13 @@
 .popup__button-save_for_entry {
   background:#4285F4;
-  color: #ffffff;
-  margin-top: 69px;
+  color: #fff;
+  margin-top: 145px;
+}
+
+@media screen and (max-width: 480px) {
+  .popup__button-save_for_entry {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 250px;
+  }
 }

@@ -8,6 +8,6 @@
 @media screen and (max-width: 640px) {
   .header__auth {
     gap: 14px;
-    margin-right: 14px;
+    margin-right: 15px;
   }
 }

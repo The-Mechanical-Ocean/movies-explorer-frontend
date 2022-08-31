@@ -1,0 +1,118 @@
+.portfolio {
+  max-width: 1140px;
+  min-width: 292px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  overflow: hidden;
+  margin-left: 70px;
+  margin-right: 70px;
+  padding-bottom: 30px;
+}
+
+.portfolio__title {
+  font-style: normal;
+  margin-top: 100px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #8B8B8B;
+}
+
+.portfolio__link-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #424242;
+}
+
+.portfolio__link-container:nth-child(2) {
+  margin-top: 42px;
+}
+
+.portfolio__link-container:last-of-type {
+  border-bottom: none;
+}
+
+.portfolio__link { 
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 50px;
+  color: #FFF;
+}
+.portfolio__link:hover {
+  opacity: 0.6;
+}
+
+.portfolio__link-image {
+  background-image: url(../../images/portfolio__link-image.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 18px 5px 0 0;
+  width: 18px;
+  height: 18px;
+}
+
+.portfolio__link-image:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 900px) {
+  .portfolio {
+    max-width: 728px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .portfolio {
+    max-width: 292px;  
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .portfolio__link-image {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .portfolio__link {
+    font-size: 17px;
+    line-height: 27px;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .portfolio__link-container {
+    width: 292px;
+    margin: 20px auto 0;
+    padding-bottom: 19px;
+  }
+
+  .portfolio__link-container:nth-child(4) {
+    padding-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .portfolio__title {
+    width: 250px;
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .portfolio__title {
+    margin: 68px auto 0;
+    width: 292px;
+    font-size: 14px;
+    color: #A0A0A0;
+  }
+}

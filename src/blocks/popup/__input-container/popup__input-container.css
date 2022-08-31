@@ -1,4 +1,5 @@
 .popup__input-container {
+  counter-reset: none;
   background-color: #2F2F2F;
   border-radius: 8px;
   display: flex;

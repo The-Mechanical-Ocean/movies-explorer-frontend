@@ -8,6 +8,8 @@
 
 @media screen and (max-width: 640px) {
   .footer__title {
-    width: 300px;
+    width: 292px;
+    font-size: 12px;
+    line-height: 14.5px;
   }
 }
