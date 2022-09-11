@@ -17,6 +17,15 @@
   border-bottom: 1px solid #DADADA;
 }
 
+.about__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+
 .about__list {
   max-width: 1140px;
   margin: 70px auto 110px;
@@ -230,5 +239,12 @@
     width: 284px;
     margin-top: 70px;
     padding-bottom: 28px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about__title {
+    font-size: 18px;
+    line-height: 21px;
   }
 }

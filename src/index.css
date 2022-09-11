@@ -1,7 +1,18 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/font/font.css);
-@import url(./blocks/body/body.css);
-@import url(./blocks/page/page.css);
+
+.body {
+  background-color: #202020;
+}
+
+#root {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #202020;
+}
+
+
+/* @import url(./blocks/body/body.css);
+@import url(./components/App/App.css);
 @import url(./blocks/page/__logo/page__logo.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
@@ -101,4 +112,4 @@
 @import url(./blocks/popup/__caption/popup__caption.css);
 @import url(./blocks/popup/__input-error/popup__input-error.css);
 @import url(./blocks/popup/__input-error/_active/popup__input-error_active.css);
-@import url(./blocks/popup/__input/_type_error/popup__input_type_error.css);
+@import url(./blocks/popup/__input/_type_error/popup__input_type_error.css); */

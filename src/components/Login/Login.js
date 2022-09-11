@@ -1,6 +1,7 @@
 import React from 'react';
-import EntryForm from './EntryForm';
+import EntryForm from '../EntryForm/EntryForm';
 import {Link} from 'react-router-dom'
+import '../EntryForm/EntryForm.css';
 
 function Login(props) {
   const [email, setEmail] = React.useState('');

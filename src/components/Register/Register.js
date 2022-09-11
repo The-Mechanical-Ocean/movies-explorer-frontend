@@ -1,6 +1,7 @@
 import React from 'react';
-import EntryForm from './EntryForm';
+import EntryForm from '../EntryForm/EntryForm';
 import {Link} from 'react-router-dom'
+import '../EntryForm/EntryForm.css';
 
 function Register(props) {
   const [name, setName] = React.useState('');
@@ -53,7 +54,7 @@ function Register(props) {
       <span className="popup__input-error popup__input-error_active" id="password-error"></span>
       <button className="popup__button-save popup__button-save_for_entry" type="submit">Зарегистрироваться</button>
       <p className={"popup__span-text"}>Уже зарегистрированы? 
-        <Link to={'sign-in'} className={"popup__span-link"}> Войти</Link>
+        <Link to={'signin'} className={"popup__span-link"}> Войти</Link>
       </p>
     </EntryForm>
   )  
