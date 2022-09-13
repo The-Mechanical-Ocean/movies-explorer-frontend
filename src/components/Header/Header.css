@@ -10,19 +10,8 @@
 
 .header__small {
   max-width: 396px;
-  margin-top: 70px;
-  margin-bottom: 40px;
+  margin: 130px auto 0;
   outline: 1px solid red;
-}
-@media screen and (max-width: 900px) {
-  .header {
-    max-width: 768px;
-  }
-}
-@media screen and (max-width: 640px) {
-  .header {
-    max-width: 320px;
-  }
 }
 
 .header__logo {
@@ -33,6 +22,33 @@
   height: 33px;
   color: #FFFFFF;
   margin-left: 70px;
+}
+
+.header__logo-popup {  
+margin-left: 0;
+cursor: pointer;
+}
+
+.header__logo-link {
+  list-style: none;
+  cursor: pointer;
+}
+
+.header__logo-link:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease 0s;
+}
+
+
+@media screen and (max-width: 900px) {
+  .header {
+    max-width: 768px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .header {
+    max-width: 320px;
+  }
 }
 
 @media screen and (max-width: 640px) {
