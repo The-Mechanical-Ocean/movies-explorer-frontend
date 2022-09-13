@@ -10,7 +10,6 @@
   justify-content: space-between;
   margin: 18px 0 18px;
   width: 100%;
-  outline: 1px solid red;
 }
 
 .movie-card__image {
@@ -22,8 +21,8 @@
   font-size: 15px;
   line-height: 18px;
   color: #FFFfff;
-  margin: 0;
-  margin-left: 18px;
+  margin: 0 18px 0;
+  /* margin-left: 18px; */
 }
 
 .movie-card__time {

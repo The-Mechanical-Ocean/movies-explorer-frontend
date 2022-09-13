@@ -1,6 +1,6 @@
 .popup {
   display: flex;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   bottom: 0;
   right: 0;
@@ -139,6 +139,7 @@
   text-align: center;
   cursor: pointer;
 }
+
 .popup__button-save:hover {
   opacity: 0.8;
   transition: opacity 0.5s ease 0s;

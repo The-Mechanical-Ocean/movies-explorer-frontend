@@ -5,12 +5,12 @@ import cards from '../../utils/cards'
 import './Movies.css';
 
 const Movies = () => {
-    return (
-        <main className='movies'>
-            <SearchForm/>
-            <MoviesCardList cards={cards}/>
-        </main>
-    );
+  return (
+    <main className='movies'>
+      <SearchForm/>
+      <MoviesCardList cards={cards}/>
+    </main>
+  );
 };
 
 export default Movies;
