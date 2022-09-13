@@ -3,7 +3,9 @@
   flex-direction: row;
   gap: 30px;
   justify-content: space-between;
+  align-items: center;
   margin-right: 70px;
+  outline: 1px solid red;
 }
 
 .navigation__text {
@@ -18,8 +20,8 @@
 .navigation__link {
   color: #fff;
   text-decoration: none;   
-  margin-top:auto;
-  margin-bottom: auto;
+  /* margin-top:auto;
+  margin-bottom: auto; */
   z-index: 1;
   height: fit-content;
 }
@@ -30,8 +32,6 @@
 
 .navigation__link_button {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 76px;
   height: 32px;
   color: #000000;

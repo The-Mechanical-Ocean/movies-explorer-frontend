@@ -36,7 +36,7 @@
   width: 100%;
   background-color: transparent;
   border: none;
-  height: 50px;
+  height: 20px;
   color: #ffffff;
   padding: 0;
   box-sizing: border-box;
@@ -47,7 +47,7 @@
 }
 
 .search__input:focus {
-  border: solid 1px #4285F4;
+  border: solid 1px #ccc;  
 }
 
 .search__button {
