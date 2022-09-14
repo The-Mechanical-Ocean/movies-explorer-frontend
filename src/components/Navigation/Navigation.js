@@ -39,7 +39,7 @@ const Navigation = () => {
   return (
     <Routes>
       <Route exact path='/' element={
-        <nav className='navigation'>  
+        <nav className={ location.pathname === '/' ? 'navigation-main' : 'navigation'}>  
           <Link className="navigation__text navigation__link" to='/signup' >Регистрация</Link>
           <Link className='navigation__link_button navigation__text' to='/signin' type="button">Войти</Link>
         </nav>

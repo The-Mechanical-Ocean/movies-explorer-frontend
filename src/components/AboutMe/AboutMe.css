@@ -104,21 +104,6 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 640px) {
-  .about-me__container {
-    width: 292px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .about-me__links {
-    width: 292px;
-    margin: 40px auto 0;
-    justify-content: flex-start;
-    gap: 26px;
-  }
-}
-
 @media screen and (max-width: 1080px) {
   .about-me__description {
     width: 425px;
@@ -149,6 +134,23 @@
     margin: 20px auto 0;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .about-me__container {
+    width: 292px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about-me__links {
+    width: 292px;
+    margin: 40px auto 0;
+    justify-content: flex-start;
+    gap: 26px;
+  }
+}
+
+
 
 @media screen and (max-width: 900px) {
   .about-me__about {

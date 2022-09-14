@@ -8,7 +8,8 @@ const Header = () => {
 
     return (
       <header className={ location.pathname === '/signin' ? 'header__small' 
-        : location.pathname === '/signup' ? 'header__small' : 'header'}>
+        : location.pathname === '/signup' ? 'header__small' 
+        : location.pathname === '/' ? 'header-main' : 'header'}>
         <Link  className= 'header__logo-link' to='/'>
         <div className={ location.pathname === '/signin' ? 'header__logo || header__logo-popup' 
       : location.pathname === '/signup' ? 'header__logo || header__logo-popup' : 'header__logo'}></div>

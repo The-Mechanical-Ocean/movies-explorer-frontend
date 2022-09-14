@@ -7,8 +7,8 @@
   min-height: 64vh;
 }
 
-@media screen and (max-width: 900px) {
+/* @media screen and (max-width: 900px) {
   .movies {
       max-width: 92.3%;
   }
-}
+} */

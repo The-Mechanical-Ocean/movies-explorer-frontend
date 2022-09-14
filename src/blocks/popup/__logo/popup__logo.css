@@ -1,9 +1,0 @@
-.popup__logo {
-  margin-left: 0;
-}
-
-@media screen and (max-width: 480px) {
-  .popup__logo {
-    margin: 56px auto 0;
-  }
-}

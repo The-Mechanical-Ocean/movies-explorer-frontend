@@ -1,9 +1,0 @@
-.student__container {
-  position: relative;
-  max-width: 1140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
-  overflow: hidden;
-}

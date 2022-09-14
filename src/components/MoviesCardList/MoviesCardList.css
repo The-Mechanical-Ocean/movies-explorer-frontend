@@ -13,6 +13,7 @@
   row-gap: 32px;
   column-gap: 30px;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
 .movie-list__button {
@@ -57,7 +58,7 @@
 
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 745px) {
   .movie-list {
       margin-top: 50px;
   }

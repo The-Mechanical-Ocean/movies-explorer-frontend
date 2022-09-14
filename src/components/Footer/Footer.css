@@ -1,5 +1,5 @@
 .footer {
-  margin: 100px auto 0;
+  margin: 0 auto 0;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -58,6 +58,17 @@
   opacity: 0.6;
 }
 
+@media screen and (max-width: 1160px) {
+  .footer {
+    max-width: 768px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .footer {
+    max-width: 710px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .footer__copyright {
     font-size: 12px;
@@ -91,11 +102,6 @@
   }
 }
 
-@media screen and (max-width: 900px) {
-  .footer {
-    max-width: 768px;
-  }
-}
 @media screen and (max-width: 640px) {
   .footer {
     max-width: 292px;
