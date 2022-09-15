@@ -1,4 +1,11 @@
-.navigation, .navigation-main {
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation-main {
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -15,6 +22,15 @@
   color: #fff;
 }
 
+.navigation__text_button {
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+}
+
 .navigation__link {
   color: #fff;
   text-decoration: none;   
@@ -28,6 +44,8 @@
 
 .navigation__link_button {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 76px;
   height: 32px;
   color: #000000;
@@ -223,7 +241,6 @@
 @media screen and (max-width: 640px) {
   .navigation, .navigation-main {
     gap: 14px;
-    margin-right: 15px;
   }
 }
 

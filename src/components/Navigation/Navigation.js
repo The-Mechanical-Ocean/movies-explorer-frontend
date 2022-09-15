@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import {Link, Route, Routes, NavLink, useLocation} from 'react-router-dom';
 import './Navigation.css';
-import profile from '../../images/profile.svg';
+import profileIcon from '../../images/profile__button-edit.svg';
 
 const Navigation = () => {
   let location = useLocation();
@@ -41,7 +41,7 @@ const Navigation = () => {
       <Route exact path='/' element={
         <nav className={ location.pathname === '/' ? 'navigation-main' : 'navigation'}>  
           <Link className="navigation__text navigation__link" to='/signup' >Регистрация</Link>
-          <Link className='navigation__link_button navigation__text' to='/signin' type="button">Войти</Link>
+          <Link className='navigation__link_button' to='/signin' type="button"><p className='navigation__text_button'>Войти</p></Link>
         </nav>
       }>
       </Route>
@@ -59,7 +59,7 @@ const Navigation = () => {
                     <NavLink
                         className={({isActive}) => isActive ? 'navigation__web-link navigation__web-link_active' : 'navigation__web-link'}
                         to='/profile'><p className='navigation__text'>Аккаунт</p><img
-                        className='navigation__icon' alt='profile icon' src={profile}/></NavLink>
+                        className='navigation__icon' alt='profile img' src={profileIcon}/></NavLink>
                 </div>
                 <button onClick={handleMenu} className={"navigation__burger-menu"}>
                     <span
@@ -87,7 +87,7 @@ const Navigation = () => {
                         <NavLink
                             className={({isActive}) => isActive ? 'navigation__site-link navigation__site-link_margin_bottom navigation__site-link_active' : 'navigation__site-link navigation__site-link_margin_bottom'}
                             to='/profile'><p className='navigation__text'>Аккаунт</p><img
-                            className='navigation__icon' alt='profile icon' src={profile}/></NavLink>
+                            className='navigation__icon' alt='profile icon' src={profileIcon}/></NavLink>
                     </div>
                 </>}
             </>} key={index}></Route>

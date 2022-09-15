@@ -104,6 +104,18 @@
   opacity: 0.6;
 }
 
+@media screen and (max-width: 900px) {
+  .about-me {
+    padding: 0 50px 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about-me {
+    padding: 0;
+  }
+}
+
 @media screen and (max-width: 1080px) {
   .about-me__description {
     width: 425px;
@@ -225,17 +237,5 @@
     width: 284px;
     margin-top: 70px;
     padding-bottom: 28px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .about-me {
-    padding: 0 50px 0;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .about-me {
-    padding: 0;
   }
 }
