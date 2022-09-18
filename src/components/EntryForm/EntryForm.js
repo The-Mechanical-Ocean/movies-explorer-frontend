@@ -2,7 +2,6 @@ import React from 'react';
 import './EntryForm.css';
 
 function EntryForm({name, title, children, onSubmit}) {
-
   return (
     <div className="popup popup_for_entry popup_opened">
       <div className="popup__container popup__container_for_entry">
@@ -13,7 +12,7 @@ function EntryForm({name, title, children, onSubmit}) {
         </form>
       </div>   
     </div>  
-    )
+  )
 }
 
 export default EntryForm;

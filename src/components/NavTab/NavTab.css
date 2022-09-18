@@ -16,12 +16,11 @@
 }
 
 .navtab__link {
-  border-radius: 10px;
+  width: 96px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 96px;
-  height: 36px;
   color: #fff;
   font-style: normal;
   font-weight: 500;
@@ -30,9 +29,11 @@
   text-decoration: none;
   z-index: 1;
   background-color: #303030;
+  border-radius: 10px;
 }
 .navtab__link:hover {
   opacity: 0.6;
+  transition: opacity 0.5s ease 0s;
 }
 
 @media screen and (max-width: 900px) {

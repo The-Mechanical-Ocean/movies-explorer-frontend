@@ -4,19 +4,19 @@ import Navigation from "../Navigation/Navigation";
 import './Header.css';
 
 const Header = () => {
-    let location = useLocation();
+  let location = useLocation();
 
-    return (
-      <header className={ location.pathname === '/signin' ? 'header__small' 
-        : location.pathname === '/signup' ? 'header__small' 
-        : location.pathname === '/' ? 'header-main' : 'header'}>
-        <Link  className= 'header__logo-link' to='/'>
-        <div className={ location.pathname === '/signin' ? 'header__logo || header__logo-popup' 
+  return (
+    <header className={ location.pathname === '/signin' ? 'header__small' 
+      : location.pathname === '/signup' ? 'header__small' 
+      : location.pathname === '/' ? 'header-main' : 'header'}>
+      <Link  className= 'header__logo-link' to='/'>
+      <div className={ location.pathname === '/signin' ? 'header__logo || header__logo-popup' 
       : location.pathname === '/signup' ? 'header__logo || header__logo-popup' : 'header__logo'}></div>
-        </Link>
-        <Navigation />
-      </header>
-    );
+      </Link>
+      <Navigation />
+    </header>
+  );
 };
 
 export default Header;

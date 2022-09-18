@@ -18,7 +18,7 @@ const Portfolio = () => {
         <a href='https://the-mechanical-ocean.nomoredomains.sbs' target='_ blank'><div className='portfolio__link-image'></div></a>
       </div>  
     </section>
-    );
+  );
 };
 
 export default Portfolio;

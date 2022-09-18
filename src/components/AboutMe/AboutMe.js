@@ -5,7 +5,7 @@ const AboutMe = () => {
   return (
     <section className='about-me' id='about-me'>
       <div className='about-me__container'>
-      <div className='about-me__title-container'><h3 class="about-me__title">Студент</h3></div>
+      <div className='about-me__title-container'><h3 class='about-me__title'>Студент</h3></div>
       <div className='about-me__foto'></div>
         <p className='about-me__name'>Александр</p>
         <p className='about-me__about'>Фронтенд-разработчик, 33 года</p>
@@ -16,7 +16,7 @@ const AboutMe = () => {
           После того, как прошёл курс по веб-разработке, начал заниматься понемногу фриланс-заказами и планирую полностью сменить профессиональную деятельность.</p>
         <div className='about-me__links'>
           <a className='about-me__link' href='https://facebook.com'>Facebook</a>
-          <a className='about-me__link' href='https://github.com/The-Mechanical-Ocean'  target='_ blank'>Github</a>
+          <a className='about-me__link' href='https://github.com/The-Mechanical-Ocean' target='_ blank'>Github</a>
         </div>  
       </div>
     </section>

@@ -4,7 +4,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import cards from '../../utils/cards'
 import './Movies.css';
 
-const Movies = () => {
+function Movies() {
   return (
     <main className='movies'>
       <SearchForm/>

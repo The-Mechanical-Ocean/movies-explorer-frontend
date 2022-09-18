@@ -1,8 +1,8 @@
 .filter {
-  display: flex;
-  align-items: center;
   width: 197px;
   height: 40px;
+  display: flex;
+  align-items: center;
   justify-content: center;
   box-sizing: border-box;
   border-left: 1px solid #424242;
@@ -12,10 +12,10 @@
 }
 
 .filter__container {
-  position: relative;
-  display: inline-block;
   width: 36px;
   height: 20px;
+  position: relative;
+  display: inline-block;
   margin-right: 13px;
 }
 
@@ -25,7 +25,7 @@
   height: 0;
 }
 
-.filter__slider {
+.filter__tumbler {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -38,23 +38,23 @@
   border-radius: 20px;
 }
 
-.filter__slider:before {
-  position: absolute;
-  content: "";
+.filter__tumbler:before {
   height: 17px;
   width: 16px;
   left: 2px;
   bottom: 2px;
+  position: absolute;
+  content: "";
   background-color: white;
   transition: .4s;
   border-radius: 50%;
 }
 
-.filter__checkbox:checked + .filter__slider {
+.filter__checkbox:checked + .filter__tumbler {
   background-color: #3DDC84;
 }
 
-.filter__checkbox:checked + .filter__slider:before {
+.filter__checkbox:checked + .filter__tumbler:before {
   transform: translateX(17px);
 }
 
@@ -65,7 +65,6 @@
   color: #FFFFFF;
   margin: 0;
 }
-
 
 @media screen and (max-width: 645px) {
   .filter {

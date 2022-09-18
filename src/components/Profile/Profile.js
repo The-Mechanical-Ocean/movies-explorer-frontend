@@ -20,7 +20,7 @@ const Profile = ({name, email}) => {
       </form>
       <Link className='profile__link' replace to='/signin'>Выйти из аккаунта</Link>
     </main>
-    );
+  );
 };
 
 export default Profile;
