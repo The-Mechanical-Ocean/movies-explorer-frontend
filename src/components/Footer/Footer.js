@@ -8,9 +8,9 @@ function Footer() {
       <div className='footer__nav-container'>
         <p className="footer__copyright">&copy; 2022. Александр Кудрин</p>
         <nav className="footer__nav">  
-          <a className="footer__text footer__link" href='https://practicum.yandex.ru' >Яндекс.Практикум</a>
-          <a className="footer__text footer__link" href='https://practicum.yandex.ru'>Github</a>
-          <a className="footer__text footer__link" href='http://facebook.com/' >Facebook</a>
+          <a className="footer__text footer__link" href='https://practicum.yandex.ru' target=' _blank'>Яндекс.Практикум</a>
+          <a className="footer__text footer__link" href='https://github.com/The-Mechanical-Ocean' target=' _blank'>Github</a>
+          <a className="footer__text footer__link" href='http://facebook.com/' target=' _blank'>Facebook</a>
         </nav>  
       </div>   
     </footer>

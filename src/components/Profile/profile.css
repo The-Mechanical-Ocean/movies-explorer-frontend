@@ -5,19 +5,22 @@
 }
 
 .profile__title {
+  width: 100%;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
   text-align: center;
-  margin-bottom: 123px;
+  margin-bottom: 120px;
 }
 
 .profile__input-container {
   width: 100%;
   display: flex;
   border-bottom: solid 1px #424242;
-  margin-bottom: 16px;
 }
 
 .profile__input-container:last-of-type {
-  margin-bottom: 220px;
+  margin-bottom: 205px;
   border: none;
 }
 

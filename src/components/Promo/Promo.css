@@ -10,7 +10,7 @@
 
 .promo__container {
   width: 1200px;
-  height: 397px;
+  height: 430px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@
   width: 730px;
   font-style: normal;
   font-weight: 400;
-  font-size: 46.5px;
+  font-size: 46px;
   line-height: 58px;
   color: #fff;
 }
@@ -34,37 +34,29 @@
   .promo {
     max-width: 768px;
   }
+
+  .promo__container {
+    max-width: 728px;
+    height: 805px;
+  }
+  
+  .promo__title {
+    width: 660px;
+    font-size: 37px;
+    line-height: 52px;
+  }
 }
 
 @media screen and (max-width: 640px) {
   .promo {
     max-width: 292px;
   }
-}
 
-@media screen and (max-width: 900px) {
-  .promo__container {
-    max-width: 728px;
-    height: 834px;
-  }
-}
-
-@media screen and (max-width: 640px) {
   .promo__container {
     max-width: 292px;
-    height: 586px;
+    height: 546px;
   }
-}
 
-@media screen and (max-width: 900px) {
-  .promo__title {
-    width: 660px;
-    font-size: 39px;
-    line-height: 52px;
-  }
-}
-
-@media screen and (max-width: 640px) {
   .promo__title {
     width: 292px;
     font-size: 28px;

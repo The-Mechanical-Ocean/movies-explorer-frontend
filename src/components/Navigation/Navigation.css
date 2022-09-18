@@ -88,7 +88,7 @@
 }
 
 .navigation__icon {
-  margin-left: 8px;
+  margin-left: 10px;
   padding: 6px;
   border-radius: 50%;
   background-color: #313131;
@@ -109,7 +109,6 @@
   .navigation-main {
     margin-right: 0;
   }
-
 }
 
 @media screen and (max-width: 800px) {
@@ -247,11 +246,11 @@
     gap: 14px;
   }
 
-  .navigation__text {
+  .navigation-main__text {
     font-size: 10px;
   }
   
-  .navigation__link-button {
+  .navigation-main__link_button {
     width: 54px;
     height: 26px;
   }

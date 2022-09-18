@@ -8,7 +8,7 @@
 }
 
 .footer__title {
-  margin: 80px auto 20px;
+  margin: 150px auto 20px;
   color: #8B8B8B;
   font-weight: 400;
   font-size: 13px;
@@ -56,6 +56,7 @@
 
 .footer__link:hover {
   opacity: 0.6;
+  transition: opacity 0.5s ease 0s;
 }
 
 @media screen and (max-width: 1160px) {
@@ -97,6 +98,7 @@
 
 @media screen and (max-width: 645px) {
   .footer__title {
+    margin-top: 73px;
     width: 292px;
     font-size: 12px;
     line-height: 14.5px;

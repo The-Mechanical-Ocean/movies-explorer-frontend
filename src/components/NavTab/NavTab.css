@@ -39,23 +39,23 @@
 @media screen and (max-width: 900px) {
   .navtab {
     max-width: 728px;
+    margin-bottom: -35px;
+    transform: translate(0, -35px);
   }
 }
 
 @media screen and (max-width: 640px) {
   .navtab {
     max-width: 292px;
+    margin-bottom: -8px;
+    transform: translate(0, -8px);
+    padding-bottom: 18px;
   }
-}
 
-@media screen and (max-width: 640px) {
   .navtab__container {
     gap: 6px;
-    padding-bottom: 17px;
   }
-}
 
-@media screen and (max-width: 640px) {
   .navtab__link {
     width: 82px;
     height: 26px;

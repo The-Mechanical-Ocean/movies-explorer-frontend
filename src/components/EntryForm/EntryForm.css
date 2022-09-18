@@ -61,7 +61,7 @@
   font-size: 10px;
   line-height: 12px;
   color: #8B8B8B;
-  margin: 0 0 10px;
+  margin: 4px 0 10px;
 }
 
 .popup__input-container {
@@ -116,7 +116,7 @@
 
 .popup__button-save {
   width: 100%;
-  height: 46px;
+  height: 47px;
   margin: 0;
   padding: 0;
   background: #000000;
@@ -137,11 +137,11 @@
 .popup__button-save_for_entry {
   background:#4285F4;
   color: #fff;
-  margin-top: 55px;
+  margin-top: 90px;
 }
 
 .popup__button-save_for_login {
-  margin-top: 137px;
+  margin-top: 175px;
 }
 
 .popup__button-save_inactive {
@@ -154,11 +154,11 @@
 
 .popup__span-text{
   font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 14px;
+  line-height: 17px;
   text-align: center;
   color: #8B8B8B;
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .popup__span-link{

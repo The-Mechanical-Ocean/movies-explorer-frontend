@@ -6,12 +6,12 @@
   overflow: hidden;
   margin-left: 70px;
   margin-right: 70px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 
 .portfolio__title {
   font-style: normal;
-  margin-top: 100px;
+  margin-top: 105px;
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
@@ -22,12 +22,12 @@
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
-  padding-bottom: 23px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #424242;
 }
 
 .portfolio__link-container:nth-child(2) {
-  margin-top: 42px;
+  margin-top: 30px;
 }
 
 .portfolio__link-container:last-of-type {
@@ -39,7 +39,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
-  line-height: 50px;
+  line-height: 52px;
   color: #FFF;
 }
 
@@ -65,7 +65,17 @@
 @media screen and (max-width: 900px) {
   .portfolio {
     max-width: 728px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 5px;
   }
+
+  .portfolio__title {
+    width: 250px;
+    margin-top: 90px;
+    padding-bottom: 6px;
+  }
+
 }
 
 @media screen and (max-width: 640px) {
@@ -74,47 +84,34 @@
     margin-left: auto;
     margin-right: auto;
   }
-}
 
-@media screen and (max-width: 900px) {
-  .portfolio__title {
-    width: 250px;
-    margin-top: 90px;
-  }
-}
-
-@media screen and (max-width: 640px) {
   .portfolio__title {
     margin: 68px auto 0;
     width: 292px;
     font-size: 14px;
     color: #A0A0A0;
   }
-}
-
-@media screen and (max-width: 640px) {
-  .portfolio__link-image {
-    width: 13px;
-    height: 13px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .portfolio__link {
-    font-size: 17px;
-    line-height: 27px;
-    margin-top: 8px;
-  }
-}
-
-@media screen and (max-width: 640px) {
+  
   .portfolio__link-container {
     width: 292px;
-    margin: 20px auto 0;
+    margin: 13px auto 0;
     padding-bottom: 19px;
   }
 
   .portfolio__link-container:nth-child(4) {
     padding-bottom: 70px;
   }
+  
+  .portfolio__link {
+    font-size: 17px;
+    line-height: 27px;
+    margin-top: 8px;
+  }
+  
+  .portfolio__link-image {
+    width: 11px;
+    height: 11px;
+    margin-top: 13px;
+  }
+  
 }
