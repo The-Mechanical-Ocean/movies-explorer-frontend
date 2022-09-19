@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavTab.css';
 
-const NavTab = () => {
+function NavTab() {
   return (
     <section className='navtab'>
       <div className='navtab__container'>

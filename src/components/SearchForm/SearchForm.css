@@ -38,7 +38,7 @@
   background-color: transparent;
   border: none;
   height: 20px;
-  color: #ffffff;
+  color: #fff;
   padding: 0;
   box-sizing: border-box;
   font-weight: 400;
@@ -73,14 +73,13 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 18px;
-  color: #FFFFFF;
+  color: #fff;
   margin: 0;
 }
 
 @media screen and (max-width: 1160px) {
-
   .search__form {
-      max-width: 768px;
+    max-width: 768px;
   }
 }
 
@@ -88,35 +87,54 @@
   .search {
     max-width: 710px;
   }
+
+  .search__form {
+    margin-top: 80px;
+  }
+
+  .search__container {
+    margin-bottom: 110px;
+  }
+
+  .search__button {
+    width: 110px;
+  }  
+
+  .search__image-loop {
+    margin-left: 28px;
+  }
 }
 
 @media screen and (max-width: 645px) {
   .search {
-    height: 272px;
+    height: 260px;
   }
+  
   .search__image-loop {
     display: none;
   }
 
   .search__container {
     flex-wrap: wrap;
-
   }
 
   .search__form {
-      max-width: 292px;
-      min-height: 192px;
+    max-width: 292px;
+    min-height: 180px;
+    margin-bottom: 0;
   }
 
   .search__input {
-      max-width: 100px;
-      height: 22px;
-      margin-top: 20px;
-      margin-left: 15px;
+    font-size: 14px;
+    max-width: 100px;
+    height: 22px;
+    margin-top: 15px;
+    margin-left: 15px;
   }
 
   .search__button {
     margin-top: 20px;
     margin-right: 15px;
+    width: 60px;
   }
 }

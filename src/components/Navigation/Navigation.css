@@ -28,7 +28,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .navigation-main__link {
@@ -166,8 +166,8 @@
     display: block;
     position: absolute;
     box-sizing: border-box;
-    border: 2px solid #FFFFFF;
-    background-color: #ffffff;
+    border: 1.5px solid #fff;
+    background-color: #fff;
     width: 100%;
     margin-bottom: 3px;
     transition: ease-in .2s;
@@ -200,7 +200,7 @@
     transform: rotate(-45deg);
   }
 
-  .navigation__link-panel {
+  .navigation__link-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,7 +224,7 @@
   }
 
   .navigation__panel-link_active {
-    border-bottom: solid 2px #FFFFFF;
+    border-bottom: solid 2px #FFF;
   }
 
   .navigation__panel-link_margin_bottom {
@@ -241,7 +241,6 @@
 }
 
 @media screen and (max-width: 640px) {
-
   .navigation, .navigation-main {
     gap: 14px;
   }

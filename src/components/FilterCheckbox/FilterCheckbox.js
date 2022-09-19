@@ -1,8 +1,9 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-const FilterCheckbox = () => {
-  return (<>
+function FilterCheckbox() {
+  return (
+    <>
       <div className='filter'>
         <label className="filter__container">
           <input type='checkbox' className="filter__checkbox"/>

@@ -4,7 +4,7 @@ import {Link, Route, Routes, NavLink, useLocation} from 'react-router-dom';
 import './Navigation.css';
 import profileIcon from '../../images/profile__button-edit.svg';
 
-const Navigation = () => {
+function Navigation() {
   let location = useLocation();
   const [menu, setMenu] = React.useState(false);
   const [widthSize, setWidthSize] = React.useState(window.innerWidth);
@@ -48,7 +48,8 @@ const Navigation = () => {
       </Route>
       {['/movies', '/saved-movies', '/profile'].map((path, index) => {
         return (
-          <Route path={path} element={<>
+          <Route path={path} element={
+          <>
             <div className='navigation navigation_margin navigation_none'>
               <NavLink
                 className={({isActive}) => isActive ? 'navigation__link navigation__link_active' : 'navigation__link'}
@@ -66,10 +67,11 @@ const Navigation = () => {
               <span className={`navigation__burger-line ${menu && "navigation__burger-line_active"}`}></span>
               <span className={`navigation__burger-line ${menu && "navigation__burger-line_active"}`}></span>
             </button>
-            {menu && <>
+            {menu && 
+            <>
               <div className='navigation__burger-shadow'></div>
               <div className='navigation__burger-container'>
-                <div className='navigation__link-panel'>
+                <div className='navigation__link-container'>
                   <NavLink className={({isActive}) => isActive ? 'navigation__panel-link navigation__panel-link_margin_top navigation__panel-link_active' 
                     : 'navigation__panel-link navigation__panel-link_margin_top'} to='/'>Главная</NavLink>
                   <NavLink className={({isActive}) => isActive ? 'navigation__panel-link navigation__panel-link_active' 

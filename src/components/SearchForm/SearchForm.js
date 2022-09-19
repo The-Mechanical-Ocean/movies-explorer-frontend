@@ -2,7 +2,7 @@ import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-const SearchForm = () => {
+function SearchForm() {
   return (
     <section className='search'>
       <form className='search__form' name='search-bar'>

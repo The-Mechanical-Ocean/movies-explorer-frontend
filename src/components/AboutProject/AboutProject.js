@@ -1,7 +1,7 @@
 import React from 'react';
 import './AboutProject.css';
 
-const AboutProject = () => {
+function AboutProject() {
   return (
     <section className="about" id='about'>
       <div className='about__title-container'><h2 class="about__title">О проекте</h2></div>

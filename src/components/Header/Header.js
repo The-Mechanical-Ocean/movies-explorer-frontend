@@ -3,7 +3,7 @@ import {Link, useLocation} from 'react-router-dom';
 import Navigation from "../Navigation/Navigation";
 import './Header.css';
 
-const Header = () => {
+function Header() {
   let location = useLocation();
 
   return (

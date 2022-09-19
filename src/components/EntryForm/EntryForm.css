@@ -167,32 +167,27 @@
 }
 
 .popup__span-link:hover{
-  opacity: 0.6;
-}
-
-@media screen and (max-width: 480px) {
-  .popup__button-save_for_entry {
-    font-size: 12px;
-    line-height: 15px;
-    margin-top: 250px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .popup__button-save_for_login {
-    margin-top: 235px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .popup__name-form {
-    text-align: center;
-    margin: 50px 0 80px;
-  }
+  opacity: 0.8;
+  transition: opacity 0.5s ease 0s;
 }
 
 @media screen and (max-width: 480px) {
   .popup__container {
     width: 260px;
+  }
+
+  .popup__name-form {
+    text-align: center;
+    margin: 50px 0 80px;
+  }
+
+  .popup__button-save_for_entry {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 250px;
+  }
+
+  .popup__button-save_for_login {
+    margin-top: 235px;
   }
 }

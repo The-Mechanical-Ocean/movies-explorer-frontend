@@ -65,23 +65,22 @@
 
 @media screen and (max-width: 645px) {
   .movie-card__title {
-      font-size: 12px;
-      margin-left: 14px;
+    font-size: 12px;
+    margin-left: 14px;
   }
 
   .movie-card__time {
-      font-size: 10px;
-      margin-right: 14px;
+    font-size: 10px;
+    margin-right: 14px;
   }
 
   .movie-card__text-container {
-      margin-top: 14px;
-      margin-bottom: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
   }
 
   .movie-card__button {
-      margin-top: 14px;
-      margin-bottom: 14px;
+    margin-top: 14px;
+    margin-bottom: 14px;
   }
-  
 }

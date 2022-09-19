@@ -4,14 +4,13 @@ import cards from "../../utils/cards";
 import SearchForm from "../SearchForm/SearchForm";
 import '../Movies/Movies.css';
 
-
-const SavedMovies = () => {
-    return (
-        <main className='movies'>
-            <SearchForm/>
-            <MoviesCardList cards={cards}/>
-        </main>
-    );
+function SavedMovies() {
+  return (
+    <main className='movies'>
+      <SearchForm/>
+      <MoviesCardList cards={cards}/>
+    </main>
+  );
 };
 
 export default SavedMovies;

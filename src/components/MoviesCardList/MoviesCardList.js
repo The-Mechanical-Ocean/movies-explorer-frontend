@@ -4,13 +4,13 @@ import './MoviesCardList.css';
 
 function MoviesCardList({cards}) {
   return (
-    <section className='movie-list'>
-      <div className='movie-list__container'>
+    <section className='movie-li'>
+      <div className='movie-li__container'>
         {cards.map((card) => (
           <MoviesCard key={card.id} card={card}/>
         ))}
       </div>
-      <button className='movie-list__button-add'>Ещё</button>
+      <button className='movie-li__button-add'>Ещё</button>
     </section>
   );
 };

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import '../EntryForm/EntryForm.css';
 import './Profile.css';
 
-const Profile = ({name, email}) => {
+function Profile({name, email}) {
   return (
     <main className='profile'>
       <h2 className='popup__name-form_for_entry  profile__title'>Привет, {name}!</h2>

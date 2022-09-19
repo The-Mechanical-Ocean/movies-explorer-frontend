@@ -147,9 +147,7 @@
   .about__duration-study-cell-second {
     width: 530px;
   }
-
 }
-
 
 @media screen and (max-width: 640px) {
   .about {
@@ -211,5 +209,4 @@
     font-size: 11px;
     line-height: 12px;
   }
-
 }

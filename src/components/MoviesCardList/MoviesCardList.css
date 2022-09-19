@@ -1,4 +1,4 @@
-.movie-list {
+.movie-li {
   width: 100%;
   margin-top: 70px;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.movie-list__container {
+.movie-li__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 360px);
   row-gap: 32px;
@@ -16,7 +16,7 @@
   padding-bottom: 10px;
 }
 
-.movie-list__button-add {
+.movie-li__button-add {
   margin: 0;
   font-weight: 500;
   font-size: 12px;
@@ -34,43 +34,40 @@
   padding-top: 1px;
 }
 
-.movie-list__button-add:hover {
+.movie-li__button-add:hover {
   opacity: 0.6;
   transition: opacity 0.5s ease 0s;
 }
 
 @media screen and (max-width: 1160px) {
-  .movie-list {
+  .movie-li {
     max-width: 900px;
   }
-  
 }
 
 @media screen and (max-width: 900px) {
-  .movie-list__container {
+  .movie-li__container {
     grid-template-columns: repeat(auto-fit, 342px);
     row-gap: 35px;
     column-gap: 24px;
   }
 
-  .movie-list__button-add {
-    margin-top: 82px;
+  .movie-li__button-add {
+    margin-top: 70px;
   }
-
 }
 
 @media screen and (max-width: 745px) {
-  .movie-list {
+  .movie-li {
     margin-top: 50px;
   }
 
-  .movie-list__container {
+  .movie-li__container {
     grid-template-columns: repeat(auto-fit, 300px);
     row-gap: 17px;
   }
 
-  .movie-list__button-add {
+  .movie-li__button-add {
     width: 240px;
   }
-
 }
