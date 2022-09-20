@@ -17,6 +17,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: #272727;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .promo__title {

@@ -21,12 +21,12 @@ function MoviesCard({card}) {
       <img className='movie-card__image' src={card.image} alt='movie poster'/>
       {location.pathname === '/saved-movies' && 
       <button className='movie-card__button' 
-              onClick={handleSave}>
+              onClick={handleSave} type='button'>
         <img className='movie-card__button-img' alt='delete movie icon' src={cross}/>
       </button>}
       {location.pathname === '/movies' &&
       <button className={isSaved ? 'movie-card__button movie-card__button_red' : 'movie-card__button'}
-              onClick={handleSave}>{isSaved ? <img className='movie-card__button-img' alt='saved movie img' src={ok}/> 
+              onClick={handleSave} type='button'>{isSaved ? <img className='movie-card__button-img' alt='saved movie img' src={ok}/> 
               : <p className='movie-card__button-text'>Сохранить</p>}
       </button>}
     </div>

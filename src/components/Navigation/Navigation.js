@@ -1,5 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
+import React from 'react';
+import { useEffect } from 'react';
 import {Link, Route, Routes, NavLink, useLocation} from 'react-router-dom';
 import './Navigation.css';
 import profileIcon from '../../images/profile__button-edit.svg';
@@ -41,8 +41,8 @@ function Navigation() {
     <Routes>
       <Route exact path='/' element={
         <nav className={ location.pathname === '/' ? 'navigation-main' : 'navigation'}>  
-          <Link className="navigation-main__text navigation-main__link" to='/signup' >Регистрация</Link>
-          <Link className='navigation-main__link_button' to='/signin' type="button"><p className='navigation-main__text_button'>Войти</p></Link>
+          <Link className='navigation-main__text navigation-main__link' to='/signup' >Регистрация</Link>
+          <Link className='navigation-main__link_button' to='/signin' type='button'><p className='navigation-main__text_button'>Войти</p></Link>
         </nav>
       }>
       </Route>
@@ -62,10 +62,10 @@ function Navigation() {
                 to='/profile'><p className='navigation__text'>Аккаунт</p><img
                 className='navigation__icon' alt='profile img' src={profileIcon}/></NavLink>
             </div>
-            <button onClick={handleMenu} className={"navigation__burger-menu"}>
-              <span className={`navigation__burger-line ${menu && "navigation__burger-line_active"}`}></span>
-              <span className={`navigation__burger-line ${menu && "navigation__burger-line_active"}`}></span>
-              <span className={`navigation__burger-line ${menu && "navigation__burger-line_active"}`}></span>
+            <button onClick={handleMenu} className={'navigation__burger-menu'} type='button'>
+              <span className={`navigation__burger-line ${menu && 'navigation__burger-line_active'}`}></span>
+              <span className={`navigation__burger-line ${menu && 'navigation__burger-line_active'}`}></span>
+              <span className={`navigation__burger-line ${menu && 'navigation__burger-line_active'}`}></span>
             </button>
             {menu && 
             <>

@@ -1,7 +1,7 @@
 .header {
   margin: 0 auto;
-  max-width: 1140px;
-  width: 100%;
+  max-width: 1280px;
+  width: 89%;
   min-height: 74px;
   display: flex;
   justify-content: space-between; 
@@ -50,7 +50,7 @@
     max-width: 710px;
   }
 
-  .header-main {
+  .header-main .header {
     max-width: 728px;
     padding: 0 25px 0;
   }

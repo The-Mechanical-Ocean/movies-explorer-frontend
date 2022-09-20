@@ -10,7 +10,7 @@ function MoviesCardList({cards}) {
           <MoviesCard key={card.id} card={card}/>
         ))}
       </div>
-      <button className='movie-li__button-add'>Ещё</button>
+      <button className='movie-li__button-add' type='button'>Ещё</button>
     </section>
   );
 };

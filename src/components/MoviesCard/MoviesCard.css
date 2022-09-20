@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #222222;
+  border-radius: 6px;
 }
 
 .movie-card__text-container {

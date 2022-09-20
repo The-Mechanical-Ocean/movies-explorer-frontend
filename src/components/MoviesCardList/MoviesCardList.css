@@ -39,7 +39,7 @@
   transition: opacity 0.5s ease 0s;
 }
 
-@media screen and (max-width: 1160px) {
+@media screen and (max-width: 1180px) {
   .movie-li {
     max-width: 900px;
   }
