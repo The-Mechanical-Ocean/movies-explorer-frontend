@@ -1,0 +1,213 @@
+.about {
+  max-width: 1280px;
+  min-width: 320px;
+  width: 89%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about__title-container {
+  margin: 110px auto 0;
+  padding-bottom: 23px;
+  text-align: left;
+  width: 1140px;
+  border-bottom: 1px solid #DADADA;
+}
+
+.about__title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  color: #FFFFFF;
+}
+
+.about__list {
+  max-width: 1140px;
+  margin: 70px auto 110px;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  counter-reset: list;
+  gap: 40px;
+}
+
+.about__cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__cell-heading {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18.5px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.about__cell-text {
+  margin: 26px auto 0 ;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.about__duration-study {
+  width: 1140px;
+  margin: 0 auto 100px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.about__duration-study-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__duration-study-cell-first {
+  width: 228px;
+  height: 36px;
+  text-align: center;
+  color: #000;
+}
+
+.about__duration-study-cell-first:nth-child(1) {
+  background-color: #3DDC84;
+}
+
+.about__duration-study-cell-second {
+  width: 912px;
+  height: 36px;
+  text-align: center;
+}
+
+.about__duration-study-cell-second:nth-child(1) {
+  background-color: #303030;
+  color: #fff;
+}
+
+.about__duration-study-text-first {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 10px 0 0;
+}
+
+.about__duration-study-text-second {
+  font-style: normal;
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8B8B8B;
+}
+
+@media screen and (max-width: 900px) {
+  .about {
+    max-width: 768px;
+  }
+
+  .about__title-container {
+    width: 668px;
+    margin-top: 90px;
+  }
+
+  .about__list {
+    max-width: 668px;
+    margin-bottom: 90px;
+    gap: 30px;
+  }
+  
+  .about__cell-heading {
+    max-width: 319px;
+  }
+
+  .about__cell-text {
+    max-width: 320px;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
+  
+  .about__duration-study {
+    max-width: 668px;
+    margin-bottom: 75px;
+  }
+
+  .about__duration-study-cell-first {
+    width: 140px;
+  }
+
+  .about__duration-study-cell-second {
+    width: 530px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about {
+    max-width: 320px;
+  }
+
+  .about__title-container {
+    width: 284px;
+    margin-top: 70px;
+    padding-bottom: 28px;
+  }
+  
+  .about__title {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .about__list {
+    max-width: 284px;
+    margin: 60px 0 60px;
+    flex-wrap: wrap;
+    gap: 56px;
+  }
+
+  .about__cell-heading {
+    max-width: 284px;
+    font-size: 17.5px;
+    line-height: 21px;
+  }
+
+  .about__cell-text {
+    max-width: 284px;
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 16px;
+  }
+
+  .about__duration-study {
+    max-width: 284px;
+    margin-bottom: 70px;
+  }
+
+  .about__duration-study-cell-first {
+    width: 100px;
+    height: 35px;
+  }
+
+  .about__duration-study-cell-second {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about__duration-study-cell-second {
+    width: 184px;
+    height: 35px;
+  }
+
+  .about__duration-study-text-second {
+    font-size: 11px;
+    line-height: 12px;
+  }
+}
