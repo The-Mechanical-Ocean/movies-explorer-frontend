@@ -19,6 +19,18 @@
   background-color: transparent;
 }
 
+.popup__img {
+  object-fit: cover;
+  max-width: 75vw;
+  max-height: 75vh;
+  background-position: center;
+  background-size: contain;
+}
+
+.popup__img_tooltip {
+  margin-top: 60px;
+}
+
 .popup_opened {
   visibility: visible;
   opacity: 1;
@@ -189,5 +201,31 @@
 
   .popup__button-save_for_login {
     margin-top: 235px;
+  }
+}
+
+.popup__button-close {
+  width: 32px;
+  height: 32px;
+  background: #FFFFFF;
+  background-image: url(../../images/popup__button-close.svg);
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  cursor: pointer;
+}
+.popup__button-close:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease 0s;
+}
+@media screen and (max-width: 640px) {
+  .popup__button-close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -36px;
   }
 }
