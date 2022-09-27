@@ -54,7 +54,8 @@ changeLikeCardStatus(id, isLiked) {
 }
 
 
-saveMovie( director,
+saveMovie( country, 
+    director,
     duration,
     year,
     description,
@@ -85,25 +86,25 @@ saveMovie( director,
 }
 
 deleteMovie(id) {
-    return fetch(`${this._baseUrl}/movies/${id}`, {
+  return fetch(`${this._baseUrl}/movies/${id}`, {
     method: 'DELETE',
     headers: this._headers
-    })
-    .then(this._checkResponse)
+  })
+  .then(this._checkResponse)
 }
 
-setAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-    method: 'PATCH',
-    headers: this._headers,
-    body: JSON.stringify({
-        avatar
-    })
-    })
-    .then(this._checkResponse)
-    }
+// setAvatar(avatar) {
+//     return fetch(`${this._baseUrl}/users/me/avatar`, {
+//     method: 'PATCH',
+//     headers: this._headers,
+//     body: JSON.stringify({
+//         avatar
+//     })
+//     })
+//     .then(this._checkResponse)
+//     }
 }
 
 export const Api = new MainApi({
-    baseUrl: 'https://api.movies-explorer-T-M-O.nomoredomains.xyz',
+    baseUrl: 'https://api.movies-explorer-t-m-o.nomoredomains.xyz',
 });

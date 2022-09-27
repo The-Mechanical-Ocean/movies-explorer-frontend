@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom';
 import './MoviesCard.css';
 import ok from '../../images/ok.svg';
 import cross from '../../images/cross.svg';
+import {BASE_URL} from '../../utils/MoviesApi'
 
 function MoviesCard({card}) {
   const location = useLocation();
@@ -15,10 +16,10 @@ function MoviesCard({card}) {
   return (
     <div className='movie-card'>
       <div className='movie-card__text-container'>
-        <h2 className='movie-card__title'>{card.name}</h2>
-        <p className='movie-card__time'>{card.time}</p>
+        <h2 className='movie-card__title'>{card.nameRU}</h2>
+        <p className='movie-card__time'>{card.duration}</p>
       </div>
-      <img className='movie-card__image' src={card.image} alt='movie poster'/>
+      <img className='movie-card__image' src={BASE_URL+card.url} alt='movie poster'/>
       {location.pathname === '/saved-movies' && 
       <button className='movie-card__button' 
               onClick={handleSave} type='button'>

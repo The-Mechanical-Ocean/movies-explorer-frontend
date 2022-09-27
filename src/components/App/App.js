@@ -19,6 +19,8 @@ import { CurrentUserContext } from "../../context/CurrentUserContext";
 import {register, authorize, checkToken} from '../../utils/auth';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import { getMovies } from '../../utils/MoviesApi'
+import { filterMovies } from '../../utils/filterMovies';
 
 function App() {
   let location = useLocation(); 
@@ -31,6 +33,7 @@ function App() {
   const [statusMessage, setStatusMessage] = React.useState(false);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState(null);
+  const [movies, setMovies] = React.useState([]);
   
   useEffect( () => {
     setIsHeader(location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies' 
@@ -43,7 +46,7 @@ function App() {
     handleCheckToken();
     if (loggedIn) {
       navigate('/movies');
-      Promise.all([Api.getSavedMovie(), Api.getProfile()])
+      Promise.all([Api.getSavedMovies(), Api.getProfile()])
         .then(([resSavedMovie, resProfile]) => {
           setSavedMovie(resSavedMovie.filter((i) => i.owner._id === currentUser._id))
           setCurrentUser(resProfile);
@@ -62,12 +65,14 @@ function App() {
   }
 
   function handleOnRegister(password, email, name) {
+    // debugger;
     register(password, email, name)
       .then((res) => {
+        // debugger;
         if (res) {
-          setInfoTooltipOpen(true)
+          // setInfoTooltipOpen(true)
           setStatusMessage(true);
-          handleOnLogin(email, password);
+          setCurrentUser(res)
           navigate('/signin');
         }
       })
@@ -78,10 +83,11 @@ function App() {
   }
 
   function handleOnLogin(password, email) {
+    debugger;
     authorize(password, email)
       .then((res) => {
         if (res) {
-          setEmail(email);
+          // setEmail(email);
           localStorage.setItem('jwt', res.token);
           handleLoggedIn()
           navigate('/movies');
@@ -93,15 +99,15 @@ function App() {
       })
   }
 
-  function handleMovieDelete(card) {
-    Api.deleteMovie(card._id) 
-      .then(() => {setSavedMovie((state) => state.filter((c) => c._id !== card._id));
+  function handleMovieDelete(movie) {
+    Api.deleteMovie(movie._id) 
+      .then(() => {setSavedMovie((state) => state.filter((c) => c._id !== movie._id));
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})
   }
 
-  function handleEditUser(user) {
-    Api.editProfile(user.name, user.email)
+  function handleEditProfile(name, email) {
+    Api.editProfile(name, email)
       .then((res) => {
         setCurrentUser(res)
         closeAllPopups()
@@ -115,7 +121,7 @@ function App() {
       checkToken(jwt)
       .then((res) => {
         if (res) {
-          setEmail(res.email);
+          // setEmail(res.email);
           handleLoggedIn();
         }
       })
@@ -123,11 +129,21 @@ function App() {
     }
   }
 
+  function handleMovieSearch(searchText, isShortMovie) {
+    getMovies()
+      .then((res) =>{
+        const filtered = filterMovies(res, searchText, isShortMovie)  
+        setMovies(filtered)
+        console.log(filtered)
+      })
+  }
+
+
   function handleLogout() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
     setEmail('');
-    navigate('/signin');
+    navigate('/');
   }
 
   return (
@@ -136,16 +152,20 @@ function App() {
         {isHeader && <Header />}
         <Routes>
           <Route path='/' element={<Main />}/>
-          <Route path='/signup' element={<Register />}
-                onRegister={handleOnRegister}/>
-          <Route path='/signin' element={<Login />}
-                OnLogin={handleOnLogin}/>
-        <Route element={<ProtectedRoute></ProtectedRoute>}>      
-          <Route path='/movies' element={<Movies/>}/>
+          <Route path='/signup' element={<Register onSubmit={handleOnRegister}
+                                                   />}
+          />
+          <Route path='/signin' element={<Login onLogin={handleOnLogin} />}
+                
+                // loggedIn={loggedIn}
+                />
+        {/* <Route element={<ProtectedRoute loggedIn={loggedIn}>       */}
+          <Route path='/movies' element={<Movies handleMovieSearch={handleMovieSearch} cards={movies} />}/>
           <Route path='/saved-movies' element={<SavedMovies/>}/>
           <Route path='/profile' element={<Profile name={'Александр'} email={'pochta@yandex.ru'}/>}/>
           <Route path='*' element={<PageNotFound/>}/>
-        </Route>  
+          {/* </ProtectedRoute>}> */}
+        {/* </Route>   */}
         </Routes>  
         <InfoTooltip
           name={'info-tool'}

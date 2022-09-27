@@ -1,4 +1,4 @@
-export const movieFilter = (allMovies, film, checkShorts) => {
+export const filterMovies = (allMovies, film, checkShorts) => {
   return allMovies.filter((movieCard) => {
     if (checkShorts === false) {
       return movieCard.nameRU.toLowerCase().includes(film.toLowerCase())

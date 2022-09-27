@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.movies-explorer-T-M-O.nomoredomains.xyz';
+export const BASE_URL = 'https://api.movies-explorer-t-m-o.nomoredomains.xyz';
 
 function checkResponse(res) {
     if (res.ok) {
@@ -8,13 +8,13 @@ function checkResponse(res) {
     }
 }
 
-export const register = (password, email) => {
+export const register = (password, email, name) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({password, email})
+        body: JSON.stringify({password, email, name})
     })
         .then((res) => checkResponse(res))
 
