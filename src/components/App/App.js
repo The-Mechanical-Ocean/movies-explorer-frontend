@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 import okImg from '../../images/infotooltip__ok-auth.svg';
 import errorImg from '../../images/infotooltip__error-auth.svg';
@@ -44,16 +44,27 @@ function App() {
 
   useEffect(() => {
     handleCheckToken();
-    if (loggedIn) {
-      navigate('/movies');
-      Promise.all([Api.getSavedMovies(), Api.getProfile()])
-        .then(([resSavedMovie, resProfile]) => {
-          setSavedMovie(resSavedMovie.filter((i) => i.owner._id === currentUser._id))
+    if (localStorage.getItem('jwt')) {
+      
+      Api.getProfile()
+        .then((resProfile) => {
           setCurrentUser(resProfile);
         })
         .catch((err) =>{console.log(`Ошибка: ${err}`)})        
     }
-  }, [loggedIn, currentUser, navigate])
+  }, [localStorage.getItem('jwt')])
+
+  useEffect(() => {
+    handleCheckToken();
+    if (localStorage.getItem('jwt')) {
+      
+      Api.getSavedMovies()
+        .then((resSavedMovie) => {
+          setSavedMovie(resSavedMovie.filter((i) => i.owner._id === currentUser._id))
+        })
+        .catch((err) =>{console.log(`Ошибка: ${err}`)})        
+    }
+  }, [currentUser])
 
   function handleLoggedIn() {
     setLoggedIn(true);
@@ -65,32 +76,31 @@ function App() {
   }
 
   function handleOnRegister(password, email, name) {
-    // debugger;
     register(password, email, name)
       .then((res) => {
-        // debugger;
         if (res) {
-          // setInfoTooltipOpen(true)
+          setInfoTooltipOpen(true)
           setStatusMessage(true);
           setCurrentUser(res)
           navigate('/signin');
         }
       })
       .catch((err) => {
+        setInfoTooltipOpen(true);  
+        setStatusMessage(false); 
         console.log(`Ошибка: ${err}`)
         })
       .finally(() => setInfoTooltipOpen(true))        
   }
 
   function handleOnLogin(password, email) {
-    debugger;
+    // debugger;
     authorize(password, email)
       .then((res) => {
         if (res) {
-          // setEmail(email);
           localStorage.setItem('jwt', res.token);
-          handleLoggedIn()
-          navigate('/movies');
+          handleCheckToken()
+          navigate('/movies')
         }
       })
       .catch(() => {
@@ -108,9 +118,10 @@ function App() {
 
   function handleEditProfile(name, email) {
     Api.editProfile(name, email)
-      .then((res) => {
-        setCurrentUser(res)
-        closeAllPopups()
+      .then((resProfile) => {
+        console.log(resProfile)
+        setCurrentUser(resProfile)
+        // closeAllPopups()
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})   
   }
@@ -121,8 +132,7 @@ function App() {
       checkToken(jwt)
       .then((res) => {
         if (res) {
-          // setEmail(res.email);
-          handleLoggedIn();
+          console.log('token: success')
         }
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})
@@ -142,7 +152,7 @@ function App() {
   function handleLogout() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    setEmail('');
+    setCurrentUser({});
     navigate('/');
   }
 
@@ -152,28 +162,23 @@ function App() {
         {isHeader && <Header />}
         <Routes>
           <Route path='/' element={<Main />}/>
-          <Route path='/signup' element={<Register onSubmit={handleOnRegister}
-                                                   />}
-          />
-          <Route path='/signin' element={<Login onLogin={handleOnLogin} />}
-                
-                // loggedIn={loggedIn}
-                />
-        {/* <Route element={<ProtectedRoute loggedIn={loggedIn}>       */}
-          <Route path='/movies' element={<Movies handleMovieSearch={handleMovieSearch} cards={movies} />}/>
-          <Route path='/saved-movies' element={<SavedMovies/>}/>
-          <Route path='/profile' element={<Profile name={'Александр'} email={'pochta@yandex.ru'}/>}/>
+          <Route path='/signup' element={!localStorage.getItem('jwt') ? <Register onSubmit={handleOnRegister} /> : <Navigate replace to='/movies'/>} />
+          <Route path='/signin' element={!localStorage.getItem('jwt') ? <Login onLogin={handleOnLogin} /> : <Navigate replace to='/movies'/>} />
+          <Route element={<ProtectedRoute></ProtectedRoute>}>    
+          <Route path='/movies' element={<Movies handleMovieSearch={handleMovieSearch} cards={movies} />} />
+          <Route  path='/saved-movies' element={<SavedMovies />} /> 
+          <Route  path='/profile' element={<Profile name={currentUser.name} email={currentUser.email}
+                                  onEditProfile={handleEditProfile}
+                                  handleLogout={handleLogout} />} />
+          </Route>
           <Route path='*' element={<PageNotFound/>}/>
-          {/* </ProtectedRoute>}> */}
-        {/* </Route>   */}
         </Routes>  
         <InfoTooltip
           name={'info-tool'}
           onClose={closeAllPopups} 
           isOpen={infoTooltipOpen} 
           img={statusMessage ? okImg : errorImg} 
-          text={statusMessage ? 'Вы успешно зарегистрировались!'
-                              : 'Что-то пошло не так! Попробуйте ещё раз.'}    
+          text={statusMessage ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так...'}    
         />
         {isFooter && <Footer />}      
       </CurrentUserContext.Provider>

@@ -1,10 +1,11 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-function ProtectedRoute({ component: Component, ...props }) {
-  return (
-      () => props.loggedIn ? <Component {...props} /> : <Navigate to="/" replace /> 
-  );
+function ProtectedRoute() {
+  return localStorage.getItem('jwt') ? <Outlet /> : <Navigate replace to="/"/> 
+  
 }
 
 export default ProtectedRoute;
+
+// {isLoggedIn ? <Route path='/movies' element={...} /> : <Navigate to='/sign-in' />}

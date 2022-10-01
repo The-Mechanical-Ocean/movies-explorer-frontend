@@ -21,7 +21,7 @@ function Register(props) {
   }
 
   function handleSubmit(e) {
-    debugger;
+    // debugger;
     e.preventDefault();
     props.onSubmit(
       password,
