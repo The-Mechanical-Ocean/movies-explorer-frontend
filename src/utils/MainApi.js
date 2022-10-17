@@ -11,12 +11,49 @@ get _headers() {
 }
 
 _checkResponse(res) {
+    console.log(res)
     if (res.ok) {
         return res.json()
     }
     else {
         return Promise.reject(res.status)
     }
+}
+
+// checkToken = (token) => {
+//     return fetch(`${this._baseUrl}/users/me`, {
+//         method: 'GET',
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Authorization": `Bearer ${token}`
+//         }
+//     })
+//         .then((res) => this._checkResponse(res))
+// }
+
+register(password, email, name) {
+    return fetch(`${this._baseUrl}/signup`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({password, email, name})
+    })
+        .then((res) => this._checkResponse(res))
+
+}
+
+authorize(password, email) {
+    return fetch(`${this._baseUrl}/signin`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            password, email
+        })
+    })
+        .then((res) => this._checkResponse(res))
 }
 
 getProfile() {
@@ -105,6 +142,6 @@ deleteMovie(id) {
 //     }
 }
 
-export const Api = new MainApi({
+export const api = new MainApi({
     baseUrl: 'https://api.movies-explorer-t-m-o.nomoredomains.xyz',
 });

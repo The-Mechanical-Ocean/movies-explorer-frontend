@@ -14,9 +14,8 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
-import { Api } from "../../utils/MainApi";
+import { api } from "../../utils/MainApi";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
-import {register, authorize, checkToken} from '../../utils/auth';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { getMovies } from '../../utils/MoviesApi'
@@ -31,8 +30,6 @@ function App() {
   const [savedMovie, setSavedMovie] = React.useState([]);
   const [infoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
   const [statusMessage, setStatusMessage] = React.useState(false);
-  const [loggedIn, setLoggedIn] = React.useState(false);
-  const [email, setEmail] = React.useState(null);
   const [movies, setMovies] = React.useState([]);
   
   useEffect( () => {
@@ -43,22 +40,18 @@ function App() {
   }, [location.pathname]);
 
   useEffect(() => {
-    handleCheckToken();
     if (localStorage.getItem('jwt')) {
-      
-      Api.getProfile()
+      api.getProfile()
         .then((resProfile) => {
-          setCurrentUser(resProfile);
+          setCurrentUser(resProfile)
         })
         .catch((err) =>{console.log(`Ошибка: ${err}`)})        
     }
   }, [localStorage.getItem('jwt')])
 
   useEffect(() => {
-    handleCheckToken();
     if (localStorage.getItem('jwt')) {
-      
-      Api.getSavedMovies()
+      api.getSavedMovies()
         .then((resSavedMovie) => {
           setSavedMovie(resSavedMovie.filter((i) => i.owner._id === currentUser._id))
         })
@@ -66,40 +59,34 @@ function App() {
     }
   }, [currentUser])
 
-  function handleLoggedIn() {
-    setLoggedIn(true);
-  }
-
   function closeAllPopups() {
     setInfoTooltipOpen(false);
     setSavedMovie({});
   }
 
   function handleOnRegister(password, email, name) {
-    register(password, email, name)
+    api.register(password, email, name)
       .then((res) => {
         if (res) {
+          setStatusMessage(true)
           setInfoTooltipOpen(true)
-          setStatusMessage(true);
           setCurrentUser(res)
-          navigate('/signin');
+          navigate('/signin')
         }
       })
       .catch((err) => {
+        setStatusMessage(false);
         setInfoTooltipOpen(true);  
-        setStatusMessage(false); 
         console.log(`Ошибка: ${err}`)
         })
       .finally(() => setInfoTooltipOpen(true))        
   }
 
   function handleOnLogin(password, email) {
-    // debugger;
-    authorize(password, email)
+    api.authorize(password, email)
       .then((res) => {
         if (res) {
           localStorage.setItem('jwt', res.token);
-          handleCheckToken()
           navigate('/movies')
         }
       })
@@ -110,50 +97,46 @@ function App() {
   }
 
   function handleMovieDelete(movie) {
-    Api.deleteMovie(movie._id) 
+    api.deleteMovie(movie._id) 
       .then(() => {setSavedMovie((state) => state.filter((c) => c._id !== movie._id));
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})
   }
 
   function handleEditProfile(name, email) {
-    Api.editProfile(name, email)
+    api.editProfile(name, email)
       .then((resProfile) => {
-        console.log(resProfile)
         setCurrentUser(resProfile)
-        // closeAllPopups()
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})   
   }
 
-  function handleCheckToken() {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      checkToken(jwt)
-      .then((res) => {
-        if (res) {
-          console.log('token: success')
-        }
-      })
-      .catch((err) => {console.log(`Ошибка: ${err}`)})
-    }
-  }
+  // function handleCheckToken() {
+  //   const jwt = localStorage.getItem('jwt');
+  //   if (jwt) {
+  //     checkToken(jwt)
+  //     .then((res) => {
+  //       if (res) {
+  //         console.log('token: success')
+  //       }
+  //     })
+  //     .catch((err) => {console.log(`Ошибка: ${err}`)})
+  //   }
+  // }
 
   function handleMovieSearch(searchText, isShortMovie) {
     getMovies()
       .then((res) =>{
         const filtered = filterMovies(res, searchText, isShortMovie)  
         setMovies(filtered)
-        console.log(filtered)
       })
   }
 
 
   function handleLogout() {
     localStorage.removeItem('jwt');
-    setLoggedIn(false);
+    // setLoggedIn(false);
     setCurrentUser({});
-    navigate('/');
   }
 
   return (

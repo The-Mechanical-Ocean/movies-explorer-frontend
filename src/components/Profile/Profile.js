@@ -50,7 +50,7 @@ function Profile(props) {
         </label>
         <button className='profile__button' type='submiit'>Редактировать</button>
       </form>
-      <Link className='profile__link' replace to='/signin'
+      <Link className='profile__link' replace to='/'
             onClick={props.handleLogout}>Выйти из аккаунта</Link>
     </main>
   );

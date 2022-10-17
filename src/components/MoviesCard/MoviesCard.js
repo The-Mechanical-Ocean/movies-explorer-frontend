@@ -52,7 +52,7 @@ function MoviesCard({card, saveMovies, savedMovie, deleteMovieCard}) {
   return (
     <div className='movie-card' key={card.id || card.movieId}>
       <div className='movie-card__text-container'>
-        <h2 className='movie-card__title'>{card.nameRU}</h2>
+        <h2 className='movie-card__title' title={card.nameRU}>{card.nameRU}</h2>
         <p className='movie-card__time'>{convertHoursAndMinutes()}</p>
       </div>
       <a href={card.trailerLink} className='movie-card__link' target='_blank'>
