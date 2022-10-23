@@ -4,11 +4,11 @@ import cards from "../../utils/cards";
 import SearchForm from "../SearchForm/SearchForm";
 import '../Movies/Movies.css';
 
-function SavedMovies() {
+function SavedMovies(props) {
   return (
     <main className='movies'>
       <SearchForm/>
-      <MoviesCardList cards={cards}/>
+      <MoviesCardList cards={props.savedMovies} handleDeleteMovie={props.handleDeleteMovie}/>
     </main>
   );
 };

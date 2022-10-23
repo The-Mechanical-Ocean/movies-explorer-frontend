@@ -8,7 +8,7 @@ function Movies(props) {
   return (
     <main className='movies'>
       <SearchForm onSubmit={props.handleMovieSearch}/>
-      <MoviesCardList cards={props.cards}/>
+      <MoviesCardList cards={props.cards} saveMovie={props.handleSaveMovie}/>
     </main>
   );
 };

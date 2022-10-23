@@ -5,7 +5,7 @@ import ok from '../../images/ok.svg';
 import cross from '../../images/cross.svg';
 import {BASE_URL} from '../../utils/MoviesApi'
 
-function MoviesCard({card, saveMovies, savedMovie, deleteMovieCard}) {
+function MoviesCard({card, saveMovie, savedMovie, handleDeleteMovie}) {
   const location = useLocation();
   // const isSaved = card.id ? savedMovie.map((i) => i.movieId).includes(card.id)
   //       : location.pathname === '/saved-movies' ? true : '';
@@ -16,27 +16,16 @@ function MoviesCard({card, saveMovies, savedMovie, deleteMovieCard}) {
 
   function handleSave() {
     setIsSaved(!isSaved); 
-    saveMovies({
-        country: card.country,
-        director: card.director,
-        duration: card.duration,
-        year: card.year,
-        description: card.description,
+    saveMovie({
+        ...card,
         image: `https://api.nomoreparties.co/${card.image.url}`,
-        trailerLink: card.trailerLink,
-        nameRU: card.nameRU,
-        nameEN: card.nameEN,
         thumbnail: `https://api.nomoreparties.co/${card.image.formats.thumbnail.url}`,
         movieId: card.id,
     })
   }
 
   function handleDelete() {
-    if (location.pathname === '/saved-movies') {
-        deleteMovieCard(card)
-    }
-    if (location.pathname === '/movies')
-        deleteMovieCard(savedMovie.find((i) => i.movieId === card.id))
+    handleDeleteMovie(card._id)
   }
 
   function convertHoursAndMinutes() {
@@ -48,7 +37,7 @@ function MoviesCard({card, saveMovies, savedMovie, deleteMovieCard}) {
     }
       return `${hours}ч ${minutes}м`;
   }
-
+  console.log(card);
   return (
     <div className='movie-card' key={card.id || card.movieId}>
       <div className='movie-card__text-container'>

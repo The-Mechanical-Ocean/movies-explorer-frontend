@@ -11,7 +11,7 @@ get _headers() {
 }
 
 _checkResponse(res) {
-    console.log(res)
+    // console.log(res)
     if (res.ok) {
         return res.json()
     }
@@ -91,7 +91,7 @@ changeLikeCardStatus(id, isLiked) {
 }
 
 
-saveMovie( country, 
+saveMovie( { country, 
     director,
     duration,
     year,
@@ -101,7 +101,7 @@ saveMovie( country,
     nameRU,
     nameEN,
     thumbnail,
-    movieId) {
+    movieId }) {
     return fetch(`${this._baseUrl}/movies`, {
     method: 'POST',
     headers: this._headers,

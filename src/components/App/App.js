@@ -27,7 +27,7 @@ function App() {
   const [isHeader, setIsHeader] = React.useState(false);
   const [isFooter, setIsFooter] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
-  const [savedMovie, setSavedMovie] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
   const [infoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
   const [statusMessage, setStatusMessage] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
@@ -53,7 +53,7 @@ function App() {
     if (localStorage.getItem('jwt')) {
       api.getSavedMovies()
         .then((resSavedMovie) => {
-          setSavedMovie(resSavedMovie.filter((i) => i.owner._id === currentUser._id))
+          setSavedMovies(resSavedMovie.filter((i) => i.owner._id === currentUser._id))
         })
         .catch((err) =>{console.log(`Ошибка: ${err}`)})        
     }
@@ -61,7 +61,7 @@ function App() {
 
   function closeAllPopups() {
     setInfoTooltipOpen(false);
-    setSavedMovie({});
+    setSavedMovies({});
   }
 
   function handleOnRegister(password, email, name) {
@@ -96,9 +96,9 @@ function App() {
       })
   }
 
-  function handleMovieDelete(movie) {
-    api.deleteMovie(movie._id) 
-      .then(() => {setSavedMovie((state) => state.filter((c) => c._id !== movie._id));
+  function handleDeleteMovie(movieId) {
+    api.deleteMovie(movieId) 
+      .then(() => {setSavedMovies((state) => state.filter((c) => c._id !== movieId));
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})
   }
@@ -131,7 +131,14 @@ function App() {
         setMovies(filtered)
       })
   }
+  
+  function handleSaveMovie (card) {
+    api.saveMovie(card)
+    .then((resSaveMovie) => {
+      setSavedMovies([resSaveMovie, ...savedMovies])
+    })
 
+  }
 
   function handleLogout() {
     localStorage.removeItem('jwt');
@@ -148,8 +155,8 @@ function App() {
           <Route path='/signup' element={!localStorage.getItem('jwt') ? <Register onSubmit={handleOnRegister} /> : <Navigate replace to='/movies'/>} />
           <Route path='/signin' element={!localStorage.getItem('jwt') ? <Login onLogin={handleOnLogin} /> : <Navigate replace to='/movies'/>} />
           <Route element={<ProtectedRoute></ProtectedRoute>}>    
-          <Route path='/movies' element={<Movies handleMovieSearch={handleMovieSearch} cards={movies} />} />
-          <Route  path='/saved-movies' element={<SavedMovies />} /> 
+          <Route path='/movies' element={<Movies handleMovieSearch={handleMovieSearch} cards={movies} handleSaveMovie={handleSaveMovie}/>} />
+          <Route  path='/saved-movies' element={<SavedMovies savedMovies={savedMovies} handleDeleteMovie={handleDeleteMovie}/>} /> 
           <Route  path='/profile' element={<Profile name={currentUser.name} email={currentUser.email}
                                   onEditProfile={handleEditProfile}
                                   handleLogout={handleLogout} />} />

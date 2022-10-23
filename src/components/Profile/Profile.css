@@ -17,10 +17,11 @@
   width: 100%;
   display: flex;
   border-bottom: solid 1px #424242;
+  /* outline: 1px solid red; */
 }
 
 .profile__input-container:last-of-type {
-  margin-bottom: 205px;
+  /* margin-bottom: 205px; */
   border: none;
 }
 
@@ -51,7 +52,7 @@
 .profile__button {
   display: flex;
   margin: 0;
-  margin: 0 auto 16px;
+  margin: 205px auto 16px;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
