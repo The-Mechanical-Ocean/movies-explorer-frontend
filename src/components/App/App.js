@@ -31,6 +31,8 @@ function App() {
   const [infoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
   const [statusMessage, setStatusMessage] = React.useState(false);
   const [movies, setMovies] = React.useState([]);
+  const [profileError, setProfileError] = React.useState(false);
+  const [profileErrText, setProfileErrText] = React.useState('');
   
   useEffect( () => {
     setIsHeader(location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies' 
@@ -107,9 +109,20 @@ function App() {
     api.editProfile(name, email)
       .then((resProfile) => {
         setCurrentUser(resProfile)
-      })
-      .catch((err) => {console.log(`Ошибка: ${err}`)})   
-  }
+        setProfileError(true);
+        setProfileErrText('Ваши данные успешно изменены');
+    })
+    .catch((err) => {
+        if (err === 409) {
+            setProfileError(true);
+            setProfileErrText('пользователь с этим e-mail уже существует');
+        }
+        if (err === 500) {
+            setProfileError(true);
+            setProfileErrText('Ошибка сервера');
+        }   
+    })
+  }  
 
   // function handleCheckToken() {
   //   const jwt = localStorage.getItem('jwt');
@@ -159,7 +172,10 @@ function App() {
           <Route  path='/saved-movies' element={<SavedMovies savedMovies={savedMovies} handleDeleteMovie={handleDeleteMovie}/>} /> 
           <Route  path='/profile' element={<Profile name={currentUser.name} email={currentUser.email}
                                   onEditProfile={handleEditProfile}
-                                  handleLogout={handleLogout} />} />
+                                  handleLogout={handleLogout} 
+                                  profileErrText={profileErrText}
+                                  profileError={profileError}
+                                  />} />
           </Route>
           <Route path='*' element={<PageNotFound/>}/>
         </Routes>  

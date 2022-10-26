@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Error from '../Error/Error';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import { useForm } from 'react-hook-form';
+import validator from 'validator';
 import isEmail from 'validator/lib/isEmail';
 import '../EntryForm/EntryForm.css';
 import './Profile.css';
@@ -27,18 +28,6 @@ function Profile(props) {
       data.email
     )
   }
-  console.log(register('name', {
-    required: true,
-    minLength: {
-      value: 6,
-      message: "Имя должно быть не короче 6 символов"
-    },
-    maxLength: {
-     value: 10,
-    message: "Имя должно быть не короче 6 символов"
-    },
-    
-    }));
 
   if(!currentUser.name) {
     return <Preloader/>
@@ -52,32 +41,31 @@ function Profile(props) {
         <label className='profile__input-container'>
           <p className='profile__input-text'>Имя</p>
           <input className='profile__input' id='edit-name'
-                {...register('name', {
-                required: true,
-                minLength: {
-                  value: 6,
-                  message: "Имя должно быть не короче 6 символов"
-                },
-                maxLength: {
-                 value: 10,
-                message: "Имя должно быть не короче 6 символов"
-                },
-                })}
-          />       
+            {...register('name', {
+            required: true,
+            minLength: {
+              value: 6,
+              message: "Имя должно быть не короче 6 символов"
+            },
+            maxLength: {
+              value: 20,
+            message: "Имя должно быть не длиннее 20 символов"
+            },
+            })}/>       
         </label>
         {errors.name && <Error errors={errors.name.message}/>}
         <label className='profile__input-container'>
           <p className='profile__input-text'>E-mail</p>
           <input className='profile__input'  id='edit-email' name='email'  
-                {...register('email', {
-                  required: true,
-                  // message: "Имя траляля",
-                  validate: (input) => isEmail(input),
-                })}
-          />
+            {...register('email', {
+              required: true,
+              message: "Имя траляля",
+              validate: (input) => isEmail(input),
+            })}/>
         </label>
-        {errors.email && <Error errors={'Почта не верна'}/>}
-        <button className='profile__button' type='submit' disabled={formState.isSubmitting}>Редактировать</button>
+        {errors.email ? <Error errors={!validator.isEmail('email') && 'введены некорректные данные поля E-mail'} />
+        : props.profileError && <Error errors={props.profileErrText} />}
+        <button className={(errors.name || errors.email ) ? 'profile__button_inactive' : 'profile__button'} type='submit' disabled={formState.isSubmitting}>Редактировать</button>
       </form>
       <Link className='profile__link' replace to='/'
             onClick={props.handleLogout}>Выйти из аккаунта</Link>

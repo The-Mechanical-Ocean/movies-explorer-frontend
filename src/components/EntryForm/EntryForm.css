@@ -158,9 +158,8 @@
 
 .popup__button-save_inactive {
   color: #000000;
-  background-color: transparent;
   border: 1px solid #000000;
-  opacity: 0.2;
+  opacity: 0.5;
   pointer-events: none;
 }
 
