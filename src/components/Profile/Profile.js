@@ -63,8 +63,7 @@ function Profile(props) {
               validate: (input) => isEmail(input),
             })}/>
         </label>
-        {errors.email ? <Error errors={!validator.isEmail('email') && 'введены некорректные данные поля E-mail'} />
-        : props.profileError && <Error errors={props.profileErrText} />}
+        {errors.email && <Error errors={!validator.isEmail('email') && 'введены некорректные данные поля E-mail'} />}
         <button className={(errors.name || errors.email ) ? 'profile__button_inactive' : 'profile__button'} type='submit' disabled={formState.isSubmitting}>Редактировать</button>
       </form>
       <Link className='profile__link' replace to='/'

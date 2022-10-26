@@ -44,7 +44,6 @@ function Register(props) {
         <input className='popup__input popup__input_for_entry popup__input_type_email' id='email' 
           {...register('email', {
             required: true,
-            message: "Имя траляля",
             validate: (input) => isEmail(input),
           })}/>  
         { errors.email && <Error errors={!validator.isEmail('email') && 'Введены некорректные данные поля E-mail'} /> }     

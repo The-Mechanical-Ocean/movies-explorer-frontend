@@ -28,11 +28,11 @@ function App() {
   const [isFooter, setIsFooter] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [infoTooltipOpen, setInfoTooltipOpen] = React.useState(false);
-  const [statusMessage, setStatusMessage] = React.useState(false);
+  const [infoTooltipOpenDone, setInfoTooltipOpenDone] = React.useState(false); 
+  const [statusMessage, setStatusMessage] = React.useState('');
+  const [infoTooltipOpenErr, setInfoTooltipOpenErr] = React.useState(false);
+  const [errStatusMessage, setErrStatusMessage] = React.useState('');
   const [movies, setMovies] = React.useState([]);
-  const [profileError, setProfileError] = React.useState(false);
-  const [profileErrText, setProfileErrText] = React.useState('');
   
   useEffect( () => {
     setIsHeader(location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies' 
@@ -62,7 +62,8 @@ function App() {
   }, [currentUser])
 
   function closeAllPopups() {
-    setInfoTooltipOpen(false);
+    setInfoTooltipOpenDone(false);
+    setInfoTooltipOpenErr(false);
     setSavedMovies({});
   }
 
@@ -70,18 +71,24 @@ function App() {
     api.register(password, email, name)
       .then((res) => {
         if (res) {
-          setStatusMessage(true)
-          setInfoTooltipOpen(true)
+          setStatusMessage('Вы успешно зарегистрировались!')
+          setInfoTooltipOpenDone(true)
           setCurrentUser(res)
           navigate('/signin')
         }
       })
       .catch((err) => {
-        setStatusMessage(false);
-        setInfoTooltipOpen(true);  
+        if (err === 409) {
+          setErrStatusMessage('пользователь с этим e-mail уже существует')
+          setInfoTooltipOpenErr(true)
+        }
+        if (err === 500) {
+          setErrStatusMessage('Ошибка сервера')
+          setInfoTooltipOpenErr(true)  
+        }   
         console.log(`Ошибка: ${err}`)
-        })
-      .finally(() => setInfoTooltipOpen(true))        
+      })
+      .finally(() => setInfoTooltipOpenErr(true))        
   }
 
   function handleOnLogin(password, email) {
@@ -92,9 +99,12 @@ function App() {
           navigate('/movies')
         }
       })
-      .catch(() => {
-        setInfoTooltipOpen(true);  
-        setStatusMessage(false);    
+      .catch((err) => {
+      if (err === 500) {
+        setErrStatusMessage('Ошибка сервера')
+        setInfoTooltipOpenErr(true)  
+      }   
+      console.log(`Ошибка: ${err}`)
       })
   }
 
@@ -109,18 +119,19 @@ function App() {
     api.editProfile(name, email)
       .then((resProfile) => {
         setCurrentUser(resProfile)
-        setProfileError(true);
-        setProfileErrText('Ваши данные успешно изменены');
+        setStatusMessage('Ваши данные успешно изменены')
+        setInfoTooltipOpenDone(true)
     })
     .catch((err) => {
-        if (err === 409) {
-            setProfileError(true);
-            setProfileErrText('пользователь с этим e-mail уже существует');
-        }
-        if (err === 500) {
-            setProfileError(true);
-            setProfileErrText('Ошибка сервера');
-        }   
+      if (err === 409) {
+        setErrStatusMessage('пользователь с этим e-mail уже существует')
+        setInfoTooltipOpenErr(true)
+      }
+      if (err === 500) {
+        setErrStatusMessage('Ошибка сервера')
+        setInfoTooltipOpenErr(true)  
+      }   
+      console.log(`Ошибка: ${err}`)
     })
   }  
 
@@ -166,15 +177,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />}/>
           <Route path='/signup' element={!localStorage.getItem('jwt') ? <Register onSubmit={handleOnRegister} /> : <Navigate replace to='/movies'/>} />
-          <Route path='/signin' element={!localStorage.getItem('jwt') ? <Login onLogin={handleOnLogin} /> : <Navigate replace to='/movies'/>} />
+          <Route path='/signin' element={!localStorage.getItem('jwt') ? <Login onSubmit={handleOnLogin} /> : <Navigate replace to='/movies'/>} />
           <Route element={<ProtectedRoute></ProtectedRoute>}>    
           <Route path='/movies' element={<Movies handleMovieSearch={handleMovieSearch} cards={movies} handleSaveMovie={handleSaveMovie}/>} />
           <Route  path='/saved-movies' element={<SavedMovies savedMovies={savedMovies} handleDeleteMovie={handleDeleteMovie}/>} /> 
           <Route  path='/profile' element={<Profile name={currentUser.name} email={currentUser.email}
                                   onEditProfile={handleEditProfile}
                                   handleLogout={handleLogout} 
-                                  profileErrText={profileErrText}
-                                  profileError={profileError}
                                   />} />
           </Route>
           <Route path='*' element={<PageNotFound/>}/>
@@ -182,9 +191,12 @@ function App() {
         <InfoTooltip
           name={'info-tool'}
           onClose={closeAllPopups} 
-          isOpen={infoTooltipOpen} 
-          img={statusMessage ? okImg : errorImg} 
-          text={statusMessage ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так...'}    
+          isOpenDone={infoTooltipOpenDone}
+          isOpenErr={infoTooltipOpenErr} 
+          img={infoTooltipOpenDone ? okImg : 
+            infoTooltipOpenErr && errorImg} 
+          text={infoTooltipOpenDone ? statusMessage : 
+                infoTooltipOpenErr && errStatusMessage }    
         />
         {isFooter && <Footer />}      
       </CurrentUserContext.Provider>
