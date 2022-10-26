@@ -51,15 +51,18 @@ function Profile(props) {
               value: 20,
             message: "Имя должно быть не длиннее 20 символов"
             },
+            pattern: {
+              value: /^[а-яА-ЯёЁa-zA-Z\- \s]*$/,
+              message: 'только латиница, кириллица, пробел или дефис' 
+            },
             })}/>       
         </label>
-        {errors.name && <Error errors={errors.name.message}/>}
+        { errors.name && <Error errors={errors.name.message} /> }
         <label className='profile__input-container'>
           <p className='profile__input-text'>E-mail</p>
           <input className='profile__input'  id='edit-email' name='email'  
             {...register('email', {
               required: true,
-              message: "Имя траляля",
               validate: (input) => isEmail(input),
             })}/>
         </label>

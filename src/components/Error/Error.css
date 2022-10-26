@@ -4,12 +4,10 @@
   line-height: 12px;
   color: #EE3465;
   margin: 5px 0 0 10px;
-  /* position: absolute; */
   left: 0;
   top: 51px;
   width: 100%;
   visibility: hidden;
-  /* outline: 1px solid red; */
 }
 
 .error_active {
