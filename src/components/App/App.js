@@ -112,7 +112,13 @@ function App() {
     api.deleteMovie(movieId) 
       .then(() => {setSavedMovies((state) => state.filter((c) => c._id !== movieId));
       })
-      .catch((err) => {console.log(`Ошибка: ${err}`)})
+      .catch((err) => {
+        if (err === 500) {
+          setErrStatusMessage('Ошибка сервера')
+          setInfoTooltipOpenErr(true)  
+        }   
+        console.log(`Ошибка: ${err}`)
+      })
   }
 
   function handleEditProfile(name, email) {
@@ -165,7 +171,8 @@ function App() {
   }
 
   function handleLogout() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
+    // localStorage.removeItem('jwt');
     // setLoggedIn(false);
     setCurrentUser({});
   }

@@ -12,8 +12,6 @@ function MoviesCard({card, saveMovie, savedMovie, handleDeleteMovie}) {
 
   const [isSaved, setIsSaved] = React.useState(false);
 
-              
-
   function handleSave() {
     setIsSaved(!isSaved); 
     saveMovie({
