@@ -19,7 +19,7 @@ function Profile(props) {
   React.useEffect(() => {
     setValue('name',currentUser.name);
     setValue('email',currentUser.email);
-  }, [currentUser]);
+  }, [setValue, currentUser]);
 
   function onSubmit(data, e) {
     e.preventDefault();
@@ -30,7 +30,7 @@ function Profile(props) {
   }
 
   if(!currentUser.name) {
-    return <Preloader/>
+    return <Preloader />
   }
 
   return (

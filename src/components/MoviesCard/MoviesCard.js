@@ -3,7 +3,6 @@ import {useLocation} from 'react-router-dom';
 import './MoviesCard.css';
 import ok from '../../images/ok.svg';
 import cross from '../../images/cross.svg';
-import {BASE_URL} from '../../utils/MoviesApi'
 
 function MoviesCard({card, saveMovie, savedMovie, handleDeleteMovie}) {
   const location = useLocation();
@@ -35,14 +34,14 @@ function MoviesCard({card, saveMovie, savedMovie, handleDeleteMovie}) {
     }
       return `${hours}ч ${minutes}м`;
   }
-  console.log(card);
+  
   return (
     <div className='movie-card' key={card.id || card.movieId}>
       <div className='movie-card__text-container'>
         <h2 className='movie-card__title' title={card.nameRU}>{card.nameRU}</h2>
         <p className='movie-card__time'>{convertHoursAndMinutes()}</p>
       </div>
-      <a href={card.trailerLink} className='movie-card__link' target='_blank'>
+      <a href={card.trailerLink} className='movie-card__link' target=' _blank'>
         <img className='movie-card__image' src={location.pathname === '/saved-movies' ? `${card.image}` : `https://api.nomoreparties.co${card.image.url}`} alt='movie poster'/>
       </a>
       {location.pathname === '/saved-movies' && 
