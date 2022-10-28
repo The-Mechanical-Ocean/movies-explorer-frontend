@@ -1,52 +1,60 @@
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-// import cards from '../../utils/cards'
 import './Movies.css';
 
 function Movies(props) {
   const [width, setWidth] = React.useState(window.innerWidth);
-  const [visibleMoviesList, setVisibleMoviesList] = React.useState(getStartRows(width));
-
+  const [visibleMovies, setVisibleMovies] = React.useState(getStartRows(width));
+  const events = ['resize', 'orientationchange'];
+  const timerId = React.useRef();
+  
   React.useEffect(() => {
     function handleWindowSize () {
-      setWidth(window.innerWidth);
-    } 
-    window.addEventListener('resize' , handleWindowSize)
-    return () => window.removeEventListener('resize', handleWindowSize)
-  },[width]);
+      clearTimeout(timerId.current)
+      timerId.current = setTimeout (() => {
+        setWidth(window.innerWidth)
+      }, 50);
+    }
+     
+    events.forEach((event) => {
+      window.addEventListener(event, handleWindowSize)
+    })
 
-  function getStartRows (width) {
-    if(width >= 1280) {
-      return 12
+    return () => { 
+      events.forEach((event) => window.removeEventListener(event, handleWindowSize))
     }
-    if(width >= 768) {
-      return 8
-    }
-    else {
-      return 5
-    }
+  },[]);
+
+  function handleLoadMore() {
+    return setVisibleMovies((Movies) => Movies + addLoadMovie(width))
   }
-
-  const addLoadMovie = (width) => {
-    if (width >= 1280) {
-        return 3;
-    }
-    return 2;
-}
-
-function handleLoadMore() {
-  return setVisibleMoviesList((Movies) => Movies + addLoadMovie(width))
-}
-
 
   return (
     <main className='movies'>
       <SearchForm onSubmit={props.handleMovieSearch}/>
       <MoviesCardList cards={props.cards} saveMovie={props.handleSaveMovie}
-                      visibleMoviesList={visibleMoviesList} handleLoadMore={handleLoadMore}   />
+                      visibleMoviesList={visibleMovies} handleLoadMore={handleLoadMore}   />
     </main>
   );
 };
 
 export default Movies;
+
+function getStartRows (width) {
+  if(width >= 1280) {
+    return 12
+  }
+  if(width >= 768) {
+    return 8
+  }
+
+  return 5
+}
+
+function addLoadMovie (width) {
+  if (width >= 1280) {
+    return 3;
+  }
+  return 2;
+}

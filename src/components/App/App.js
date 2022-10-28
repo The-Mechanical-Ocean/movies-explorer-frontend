@@ -201,7 +201,7 @@ function App() {
           isOpenDone={infoTooltipOpenDone}
           isOpenErr={infoTooltipOpenErr} 
           img={infoTooltipOpenDone ? okImg : 
-            infoTooltipOpenErr && errorImg} 
+            infoTooltipOpenErr ? errorImg : ''} 
           text={infoTooltipOpenDone ? statusMessage : 
                 infoTooltipOpenErr && errStatusMessage }    
         />

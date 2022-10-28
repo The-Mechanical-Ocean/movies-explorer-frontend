@@ -34,7 +34,7 @@ function MoviesCard({card, saveMovie, savedMovie, handleDeleteMovie}) {
     }
       return `${hours}ч ${minutes}м`;
   }
-  
+  // console.log(card);
   return (
     <div className='movie-card' key={card.id || card.movieId}>
       <div className='movie-card__text-container'>

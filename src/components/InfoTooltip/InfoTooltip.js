@@ -6,7 +6,6 @@ function InfoTooltip(props) {
   // if(!props.text) {
   //   return <Preloader/>
   // }
-
   return(
     <div className={`popup-img popup_type_image ${(props.isOpenDone || props.isOpenErr) && 'popup-img_opened'}`}>
       <div className="popup__container-img">

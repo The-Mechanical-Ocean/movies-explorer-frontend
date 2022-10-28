@@ -9,11 +9,11 @@ function MoviesCardList({cards, saveMovie, handleDeleteMovie, handleLoadMore, vi
     <section className='movie-li'>
       <div className='movie-li__container'>
         {location.pathname === '/movies' && cards.slice(0, visibleMoviesList).map((card) => (
-          <MoviesCard key={card.id} card={card} savedMovies={cards}
+          <MoviesCard key={card._id} card={card} savedMovies={cards}
           handleDeleteMovie={handleDeleteMovie} saveMovie={saveMovie}/>
         ))}
         {location.pathname === '/saved-movies' && cards.map((card) => (
-                            <MoviesCard key={card.movieId} card={card} handleDeleteMovie={handleDeleteMovie}
+                            <MoviesCard key={card._id} card={card} handleDeleteMovie={handleDeleteMovie}
                                 saveMovie={saveMovie}  />
                         ))
                         }
