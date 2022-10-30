@@ -3,12 +3,12 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
 function SearchForm(props) {
-  const [searchText, setSearchText] = React.useState(
-    props.getSearchStoreValue || ""
-  );
-  const [isShortMovie, setIsShortMovie] = React.useState(
-    JSON.parse(localStorage.getItem("isShortMovie")) || false
-  );
+  // const [searchText, setSearchText] = React.useState(
+  //   props.getSearchStoreValue || ""
+  // );
+  // const [isShortMovie, setIsShortMovie] = React.useState(
+  //   JSON.parse(localStorage.getItem("isShortMovie")) || false
+  // );
 
   // function getSearchStoreValue() {
   //   const searchStoreValue = localStorage.getItem('filmSearch');
@@ -18,14 +18,18 @@ function SearchForm(props) {
   //   return searchStoreValue;
   // }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    props.onSubmit(searchText, isShortMovie);
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   props.onSubmit(searchText, isShortMovie);
+  // }
 
   return (
     <section className="search">
-      <form className="search__form" name="search-bar" onSubmit={handleSubmit}>
+      <form
+        className="search__form"
+        name="search-bar"
+        onSubmit={props.handleMovieSearch}
+      >
         <div className="search__container">
           <div className="search__image-loop"></div>
           <input
@@ -33,13 +37,16 @@ function SearchForm(props) {
             type="text"
             placeholder="Фильм"
             // required
-            onChange={(e) => setSearchText(e.target.value)}
-            value={searchText}
+            onChange={props.handleFilmChange}
+            value={props.searchText || ""}
           />
           <button className="search__button" type="submit">
             <p className="search__button-text">Найти</p>
           </button>
-          <FilterCheckbox onChange={setIsShortMovie} checked={isShortMovie} />
+          <FilterCheckbox
+            onChange={props.showShortMovies}
+            checked={props.isShortMovie}
+          />
         </div>
       </form>
     </section>

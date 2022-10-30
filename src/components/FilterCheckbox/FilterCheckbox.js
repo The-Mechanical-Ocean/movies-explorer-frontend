@@ -9,7 +9,7 @@ function FilterCheckbox(props) {
           <input
             type="checkbox"
             className="filter__checkbox"
-            onChange={(e) => props.onChange(e.target.checked)}
+            onChange={props.onChange}
             checked={props.checked}
           />
           <span className="filter__tumbler"></span>

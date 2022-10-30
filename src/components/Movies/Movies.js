@@ -10,11 +10,12 @@ function Movies(props) {
   const [visibleMovies, setVisibleMovies] = React.useState(getStartRows(width));
   const events = ["resize", "orientationchange"];
   const timerId = React.useRef();
-  const [movies, setMovies] = React.useState(
-    JSON.parse(localStorage.getItem("Movies")) || []
+  const [searchText, setSearchText] = React.useState(getSearchStoreValue());
+  const [isShortMovie, setIsShortMovie] = React.useState(
+    JSON.parse(localStorage.getItem("isShortMovie")) || false
   );
-  // const [film, setFilm] = React.useState(getSearchStoreValue());
   const localMovies = JSON.parse(localStorage.getItem("Movies"));
+  const [movies, setMovies] = React.useState(localMovies || []);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [errorText, setErrorText] = React.useState("");
@@ -42,36 +43,9 @@ function Movies(props) {
     return setVisibleMovies((Movies) => Movies + addLoadMovie(width));
   }
 
-  // React.useEffect(() => {
-  //   // setError(false)
-  //   const searchText = localStorage.getItem("searchText");
-  //   const isShortMovie = localStorage.getItem("isShortMovie");
-  //   const moviesToDisplay = filterMovies(movies, searchText, isShortMovie);
-  //   localStorage.setItem("filteredMovies", JSON.stringify(moviesToDisplay));
-  //   // localStorage.setItem("isShortMovie", isShortMovie);
-  //   const filteredMoviesInLocal =
-  //     JSON.parse(localStorage.getItem("filteredMovies")) || [];
-  //   setMovies(filteredMoviesInLocal);
-
-  //   if (filteredMoviesInLocal.length === 0 && searchText.length > 0) {
-  //     localStorage.removeItem("filteredMovies");
-  //     localStorage.removeItem("Movies");
-  //     // setIsLoading(false);
-  //     console.log("Ничего не найдено");
-  //     // return setError(true);
-  //   }
-
-  //   // if (localMovies === []) {
-  //   //   localStorage.removeItem("Movies");
-  //   // }
-  // }, [movies]);
-
-  // React.useEffect(() => {
-  //   if (!localMovies) {
-  //     setMovies(movies);
-  //   }
-  //   setMovies(localMovies);
-  // }, [movies, localMovies]);
+  function showShortMovies() {
+    setIsShortMovie(!isShortMovie);
+  }
 
   function getSearchStoreValue() {
     const searchStoreValue = localStorage.getItem("searchText");
@@ -81,7 +55,12 @@ function Movies(props) {
     return searchStoreValue;
   }
 
-  function handleMovieSearch(searchText, isShortMovie) {
+  function handleFilmChange(e) {
+    setSearchText(e.target.value);
+  }
+
+  function handleMovieSearch(e) {
+    e.preventDefault();
     setError(false);
     setIsLoading(true);
     if (searchText === "") {
@@ -93,11 +72,11 @@ function Movies(props) {
       getMovies()
         .then((res) => {
           setIsLoading(false);
-          const filtered = filterMovies(res, searchText, isShortMovie);
-          setMovies(filtered);
-          localStorage.setItem("searchText", searchText);
+          // const filtered = filterMovies(res, searchText, isShortMovie);
           localStorage.setItem("isShortMovie", JSON.stringify(isShortMovie));
-          localStorage.setItem("Movies", JSON.stringify(filtered));
+          localStorage.setItem("searchText", searchText);
+          localStorage.setItem("Movies", JSON.stringify(res));
+          setMovies(res);
         })
         .catch(() => {
           setError(true);
@@ -112,14 +91,39 @@ function Movies(props) {
     setMovies(localMovies);
     setIsLoading(false);
     localStorage.setItem("searchText", searchText);
-    localStorage.setItem("isShortMovie", isShortMovie);
+    // localStorage.setItem("isShortMovie", isShortMovie);
   }
+  // console.log(setMovies);
+  React.useEffect(() => {
+    // debugger;
+    // setError(false);
+    const moviesToDisplay = filterMovies(movies, searchText, isShortMovie);
+    localStorage.setItem("filteredMovies", JSON.stringify(moviesToDisplay));
+    localStorage.setItem("isShortMovie", isShortMovie);
+    const filteredMoviesInLocal =
+      JSON.parse(localStorage.getItem("filteredMovies")) || [];
+    clearTimeout(timerId.current);
+    timerId.current = setTimeout(() => {
+      setMovies(filteredMoviesInLocal);
+    }, 20);
+    // setMovies(filteredMoviesInLocal);
 
+    if (filteredMoviesInLocal.length === 0 && searchText.length > 0) {
+      setIsLoading(false);
+      setErrorText("Ничего не найдено");
+      return setError(true);
+      // setError(true);
+    }
+  }, [movies, searchText, isShortMovie]);
   return (
     <main className="movies">
       <SearchForm
-        onSubmit={handleMovieSearch}
-        getSearchStoreValue={getSearchStoreValue}
+        handleMovieSearch={handleMovieSearch}
+        // getSearchStoreValue={getSearchStoreValue}
+        handleFilmChange={handleFilmChange}
+        searchText={searchText}
+        showShortMovies={showShortMovies}
+        isShortMovie={isShortMovie}
       />
       <MoviesCardList
         cards={movies}
