@@ -30,7 +30,7 @@
   font-size: 11px;
   line-height: 13px;
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 100%;
   margin: 0;
   padding: 9px 0 18px;
@@ -41,7 +41,7 @@
   font-size: 11px;
   line-height: 13px;
   text-align: right;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: rgba(1, 1, 1, 0);
   border: none;
   outline: none;
@@ -57,7 +57,7 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   background-color: rgba(1, 1, 1, 0);
   border: none;
@@ -71,7 +71,7 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: transparent;
   border: none;
   opacity: 0.2;
@@ -89,7 +89,7 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #EE3465;
+  color: #ee3465;
   display: block;
 }
 
@@ -100,39 +100,39 @@
 
 @media screen and (max-width: 900px) {
   .profile {
-      margin-top: 235px;
+    margin-top: 235px;
   }
 
   .profile__title {
-      margin-bottom: 87px;
+    margin-bottom: 87px;
   }
 
   .profile__container:last-of-type {
-      margin-bottom: 193px;
+    margin-bottom: 193px;
   }
 }
 
 @media screen and (max-width: 640px) {
   .profile {
-      max-width: 260px;
-      margin-top: 70px;
+    max-width: 260px;
+    margin-top: 70px;
   }
 
   .profile__title {
-      margin-bottom: 72px;
+    margin-bottom: 72px;
   }
 
   .profile__link {
-      font-size: 12px;
-      line-height: 15px;
+    font-size: 12px;
+    line-height: 15px;
   }
 
   .profile__button {
-      font-size: 12px;
-      line-height: 15px;
+    font-size: 12px;
+    line-height: 15px;
   }
 
   .profile__container:last-of-type {
-      margin-bottom: 363px;
+    margin-bottom: 363px;
   }
 }

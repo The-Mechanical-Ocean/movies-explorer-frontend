@@ -22,7 +22,7 @@
   padding-bottom: 45px;
   text-align: left;
   width: 1140px;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
 }
 
 .about-me__title {
@@ -31,12 +31,12 @@
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .about-me__foto {
   background-image: url(../../images/about-me__foto.jpg);
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 270px;
   height: 327px;
@@ -65,18 +65,18 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .about-me__description {
-  margin: 26px 0 0 ;
+  margin: 26px 0 0;
   text-align: left;
   width: 600px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
-  color: #FFFFFF;
+  color: #ffffff;
   overflow-wrap: break-word;
 }
 
@@ -132,14 +132,14 @@
     font-size: 40px;
     line-height: 40px;
   }
-  
+
   .about-me__about {
     width: 348px;
     margin-top: 16px;
     font-size: 12px;
     line-height: 18px;
   }
-  
+
   .about-me__description {
     width: 292px;
   }
@@ -174,19 +174,19 @@
     margin-top: 55px;
     padding-bottom: 28px;
   }
-  
+
   .about-me__title {
     font-size: 18px;
     line-height: 21px;
   }
-  
+
   .about-me__name {
     max-width: 292px;
     font-size: 30px;
     line-height: 36px;
     margin: 40px auto 0;
   }
-  
+
   .about-me__about {
     width: 292px;
     margin: 20px auto 0;
@@ -198,9 +198,9 @@
     width: 295px;
     margin: 20px auto 0;
   }
-  
+
   .about-me__foto {
-    position:static;
+    position: static;
     width: 292px;
     height: 352px;
     margin: 60px auto 0;

@@ -33,7 +33,6 @@
 //     .then((res) => checkResponse(res))
 // };
 
-
 // export const checkToken = (token) => {
 //     return fetch(`${BASE_URL}/users/me`, {
 //         method: 'GET',

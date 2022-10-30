@@ -10,7 +10,7 @@
 
 .footer__title {
   margin: 150px auto 20px;
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-weight: 400;
   font-size: 13px;
   line-height: 15.5px;
@@ -40,7 +40,7 @@
 
 .footer__link {
   text-decoration: none;
-  margin-top:auto;
+  margin-top: auto;
   margin-bottom: auto;
   z-index: 1;
   height: fit-content;
@@ -83,21 +83,21 @@
     margin-top: 0;
     text-align: center;
   }
-  
+
   .footer__title {
     margin-top: 80px;
     width: 292px;
     font-size: 12px;
     line-height: 14.5px;
   }
-  
+
   .footer__nav-container {
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
     gap: 30px;
     height: 145px;
     width: 292px;
   }
-  
+
   .footer__nav {
     flex-direction: column;
     align-items: center;

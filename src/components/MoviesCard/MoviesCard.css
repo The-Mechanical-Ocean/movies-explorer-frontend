@@ -23,7 +23,7 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
-  color: #FFFfff;
+  color: #ffffff;
   margin: 0 18px 0;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -34,7 +34,7 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  color: #8B8B8B;
+  color: #8b8b8b;
   margin: 0;
   margin-right: 18px;
 }
@@ -43,7 +43,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 11px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
 }
 
@@ -71,12 +71,12 @@
 }
 
 .movie-card__button_red {
-  background-color: #EE3465;
+  background-color: #ee3465;
 }
 
 @media screen and (max-width: 800px) {
   .movie-card__link {
-      height: 190px;
+    height: 190px;
   }
 }
 
