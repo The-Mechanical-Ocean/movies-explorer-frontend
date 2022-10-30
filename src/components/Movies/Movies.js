@@ -119,7 +119,6 @@ function Movies(props) {
     <main className="movies">
       <SearchForm
         handleMovieSearch={handleMovieSearch}
-        // getSearchStoreValue={getSearchStoreValue}
         handleFilmChange={handleFilmChange}
         searchText={searchText}
         showShortMovies={showShortMovies}
@@ -133,6 +132,7 @@ function Movies(props) {
         isLoading={isLoading}
         error={error}
         errorText={errorText}
+        savedMovies={props.savedMovies}
       />
     </main>
   );

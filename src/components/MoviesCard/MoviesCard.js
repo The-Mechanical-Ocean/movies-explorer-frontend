@@ -4,15 +4,18 @@ import "./MoviesCard.css";
 import ok from "../../images/ok.svg";
 import cross from "../../images/cross.svg";
 
-function MoviesCard({ card, saveMovie, savedMovie, handleDeleteMovie }) {
+function MoviesCard({ card, saveMovie, savedMovies, handleDeleteMovie }) {
   const location = useLocation();
-  // const isSaved = card.id ? savedMovie.map((i) => i.movieId).includes(card.id)
-  //       : location.pathname === '/saved-movies' ? true : '';
+  const isSaved = card.id
+    ? savedMovies.map((i) => i.movieId).includes(card.id)
+    : location.pathname === "/saved-movies"
+    ? true
+    : "";
 
-  const [isSaved, setIsSaved] = React.useState(false);
+  // const [isSaved, setIsSaved] = React.useState(false);
 
   function handleSave() {
-    setIsSaved(!isSaved);
+    // setIsSaved(!isSaved);
     saveMovie({
       ...card,
       image: `https://api.nomoreparties.co/${card.image.url}`,
@@ -23,6 +26,12 @@ function MoviesCard({ card, saveMovie, savedMovie, handleDeleteMovie }) {
 
   function handleDelete() {
     handleDeleteMovie(card._id);
+    // if (location.pathname === "/saved-movies") {
+    //   handleDeleteMovie(card._id);
+    // }
+    // if (location.pathname === "/movies") {
+    //   handleDeleteMovie(savedMovies.find((i) => i.movieId === card.id));
+    // }
   }
 
   function convertHoursAndMinutes() {
@@ -34,7 +43,11 @@ function MoviesCard({ card, saveMovie, savedMovie, handleDeleteMovie }) {
     }
     return `${hours}ч ${minutes}м`;
   }
-  // console.log(card);
+  // console.log(
+  //   "savedMOvies",
+  //   savedMovies.find((i) => i._id)
+  // );
+  // console.log("savedMovies", saveMovie);
   return (
     <div className="movie-card" key={card.id || card.movieId}>
       <div className="movie-card__text-container">

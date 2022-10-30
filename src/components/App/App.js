@@ -194,8 +194,8 @@ function App() {
   // }
 
   function handleSaveMovie(card) {
-    api.saveMovie(card).then((resSaveMovie) => {
-      setSavedMovies([resSaveMovie, ...savedMovies]);
+    api.saveMovie(card).then((res) => {
+      setSavedMovies([res, ...savedMovies]);
     });
   }
 
@@ -240,6 +240,7 @@ function App() {
                   // handleMovieSearch={handleMovieSearch}
                   // cards={movies}
                   handleSaveMovie={handleSaveMovie}
+                  savedMovies={savedMovies}
                 />
               }
             />

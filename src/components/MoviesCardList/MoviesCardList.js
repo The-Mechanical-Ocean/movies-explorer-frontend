@@ -13,6 +13,7 @@ function MoviesCardList({
   isLoading,
   error,
   errorText,
+  savedMovies,
 }) {
   const location = useLocation();
   return (
@@ -29,9 +30,9 @@ function MoviesCardList({
                 .slice(0, visibleMoviesList)
                 .map((card) => (
                   <MoviesCard
-                    key={card._id || card.id}
+                    key={card.id}
                     card={card}
-                    savedMovies={cards}
+                    savedMovies={savedMovies}
                     handleDeleteMovie={handleDeleteMovie}
                     saveMovie={saveMovie}
                   />
@@ -39,10 +40,11 @@ function MoviesCardList({
             {location.pathname === "/saved-movies" &&
               cards.map((card) => (
                 <MoviesCard
-                  key={card._id}
+                  key={card.movieId}
                   card={card}
                   handleDeleteMovie={handleDeleteMovie}
                   saveMovie={saveMovie}
+                  isLoading={isLoading}
                 />
               ))}
           </div>
