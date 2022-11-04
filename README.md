@@ -20,6 +20,6 @@
 
 https://disk.yandex.ru/d/3kOwPuwwl4MlZw
 
-https://github.com/The-Mechanical-Ocean/movies-explorer-frontend/pull/2
-
 https://t-m-o-portfolio-movies.nomoredomains.icu/
+
+https://github.com/The-Mechanical-Ocean/movies-explorer-frontend/pull/2
