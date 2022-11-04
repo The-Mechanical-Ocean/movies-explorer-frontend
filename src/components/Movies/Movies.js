@@ -100,9 +100,14 @@ function Movies(props) {
   }
 
   function handleSaveMovie(movie) {
-    api.saveMovie(movie).then((res) => {
-      props.setSavedMovies([res, ...props.savedMovies]);
-    });
+    api
+      .saveMovie(movie)
+      .then((res) => {
+        props.setSavedMovies([res, ...props.savedMovies]);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}`);
+      });
   }
 
   function handleMovieSearch(e) {
