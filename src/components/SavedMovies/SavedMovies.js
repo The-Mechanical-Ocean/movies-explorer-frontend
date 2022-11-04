@@ -5,9 +5,9 @@ import { filterMovies } from "../../utils/filterMovies";
 import "../Movies/Movies.css";
 
 function SavedMovies(props) {
-  const [film, setFilm] = React.useState("");
+  const [searchText, setSearchText] = React.useState("");
   const [searchResult, setSearchResult] = React.useState([]);
-  const [checkShorts, setCheckShorts] = React.useState(false);
+  const [isShortMovie, setIsShortMovie] = React.useState(false);
   const [doSearch, setDoSearch] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [errorText, setErrorText] = React.useState("");
@@ -16,31 +16,25 @@ function SavedMovies(props) {
     setSearchResult(props.savedMovies);
   }, [props.savedMovies]);
 
-  // React.useEffect(() => {
-  //   if (props.savedMovies.length === 0) {
-  //     setSearchResult(props.savedMovies);
-  //   }
-  // }, [props.handleDeleteMovie]);
-
   React.useEffect(() => {
-    const filteredMovies = filterMovies(props.savedMovies, film, checkShorts);
-    setSearchResult(filteredMovies);
+    const filtered = filterMovies(props.savedMovies, searchText, isShortMovie);
+    setSearchResult(filtered);
     setDoSearch(false);
     setError(false);
 
-    if (filteredMovies.length === 0 && film.length > 0) {
+    if (filtered.length === 0 && searchText.length > 0) {
       setErrorText("Ничего не найдено");
       return setError(true);
     }
-  }, [doSearch, checkShorts]);
+  }, [doSearch, isShortMovie]);
 
   function showShortMovies() {
-    setCheckShorts(!checkShorts);
+    setIsShortMovie(!isShortMovie);
   }
 
   function handleMovieSearch(e) {
     e.preventDefault();
-    if (film === "") {
+    if (searchText === "") {
       setErrorText("Нужно ввести ключевое слово");
       return setError(true);
     } else {
@@ -49,17 +43,17 @@ function SavedMovies(props) {
   }
 
   function handleSearchChange(e) {
-    setFilm(e.target.value);
+    setSearchText(e.target.value);
   }
 
   return (
     <main className="movies">
       <SearchForm
-        searchText={film}
+        searchText={searchText}
         handleSearchChange={handleSearchChange}
         showShortMovies={showShortMovies}
         handleMovieSearch={handleMovieSearch}
-        isShortMovie={checkShorts}
+        isShortMovie={isShortMovie}
       />
       <MoviesCardList
         cards={searchResult}

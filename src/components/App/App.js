@@ -85,7 +85,6 @@ function App() {
   function closeAllPopups() {
     setInfoTooltipOpenDone(false);
     setInfoTooltipOpenErr(false);
-    setSavedMovies({});
   }
 
   function handleOnRegister(password, email, name) {
@@ -222,8 +221,6 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  name={currentUser.name}
-                  email={currentUser.email}
                   onEditProfile={handleEditProfile}
                   handleLogout={handleLogout}
                 />

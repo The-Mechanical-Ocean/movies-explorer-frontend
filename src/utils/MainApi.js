@@ -11,24 +11,12 @@ class MainApi {
   }
 
   _checkResponse(res) {
-    // console.log(res)
     if (res.ok) {
       return res.json();
     } else {
       return Promise.reject(res.status);
     }
   }
-
-  // checkToken = (token) => {
-  //     return fetch(`${this._baseUrl}/users/me`, {
-  //         method: 'GET',
-  //         headers: {
-  //             "Content-Type": "application/json",
-  //             "Authorization": `Bearer ${token}`
-  //         }
-  //     })
-  //         .then((res) => this._checkResponse(res))
-  // }
 
   register(password, email, name) {
     return fetch(`${this._baseUrl}/signup`, {
@@ -76,13 +64,6 @@ class MainApi {
     }).then(this._checkResponse);
   }
 
-  changeLikeCardStatus(id, isLiked) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: isLiked ? "PUT" : "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
   saveMovie({
     country,
     director,
@@ -121,17 +102,6 @@ class MainApi {
       headers: this._headers,
     }).then(this._checkResponse);
   }
-
-  // setAvatar(avatar) {
-  //     return fetch(`${this._baseUrl}/users/me/avatar`, {
-  //     method: 'PATCH',
-  //     headers: this._headers,
-  //     body: JSON.stringify({
-  //         avatar
-  //     })
-  //     })
-  //     .then(this._checkResponse)
-  //     }
 }
 
 export const api = new MainApi({

@@ -56,10 +56,28 @@ function Movies(props) {
       setErrorText("Ничего не найдено");
       return setError(true);
     }
-    // убрана зависимость от текста поиска для
-    // предотвращения лишнего рендеринга
+    // убрана зависимость от изменения текста поиска для
+    // предотвращения лишнего рендеринга компонента
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies, isShortMovie]);
+
+  function getStartRows(width) {
+    if (width >= 1280) {
+      return 12;
+    }
+    if (width >= 768) {
+      return 8;
+    }
+
+    return 5;
+  }
+
+  function addLoadMovie(width) {
+    if (width >= 1280) {
+      return 3;
+    }
+    return 2;
+  }
 
   function handleLoadMore() {
     return setVisibleMovies((Movies) => Movies + addLoadMovie(width));
@@ -148,21 +166,3 @@ function Movies(props) {
 }
 
 export default Movies;
-
-function getStartRows(width) {
-  if (width >= 1280) {
-    return 12;
-  }
-  if (width >= 768) {
-    return 8;
-  }
-
-  return 5;
-}
-
-function addLoadMovie(width) {
-  if (width >= 1280) {
-    return 3;
-  }
-  return 2;
-}

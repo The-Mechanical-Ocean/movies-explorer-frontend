@@ -3,17 +3,7 @@
   font-size: 10px;
   line-height: 12px;
   color: #ee3465;
-  margin: 5px 0 0 10px;
-  left: 0;
-  top: 51px;
+  margin: 5px 0 10px;
   width: 100%;
-  visibility: hidden;
-}
-
-.error_active {
   visibility: visible;
-}
-
-.error_change_position {
-  top: 43px;
 }

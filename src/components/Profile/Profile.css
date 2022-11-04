@@ -11,17 +11,16 @@
   line-height: 28px;
   text-align: center;
   margin-bottom: 120px;
+  color: #ffffff;
 }
 
 .profile__input-container {
   width: 100%;
   display: flex;
   border-bottom: solid 1px #424242;
-  /* outline: 1px solid red; */
 }
 
 .profile__input-container:last-of-type {
-  /* margin-bottom: 205px; */
   border: none;
 }
 
@@ -47,6 +46,11 @@
   outline: none;
   width: 100%;
   padding: 9px 0 18px;
+}
+
+#edit-email {
+  padding-bottom: 8px;
+  padding-top: 16px;
 }
 
 .profile__button {

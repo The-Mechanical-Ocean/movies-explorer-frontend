@@ -5,11 +5,14 @@ import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { useForm } from "react-hook-form";
 import validator from "validator";
 import isEmail from "validator/lib/isEmail";
-import "../EntryForm/EntryForm.css";
 import "./Profile.css";
 import Preloader from "../Preloader/Preloader";
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 function Profile(props) {
+  const [valueName, setValueName] = React.useState("");
+  const [valueEmail, setValueEmail] = React.useState("");
+
   const currentUser = React.useContext(CurrentUserContext);
   const {
     register,
@@ -17,6 +20,7 @@ function Profile(props) {
     formState: { errors },
     formState,
     setValue,
+    getValues,
   } = useForm({
     mode: "onChange",
     defaultValues: { name: currentUser.name, email: currentUser.email },
@@ -32,18 +36,24 @@ function Profile(props) {
     props.onEditProfile(data.name, data.email);
   }
 
+  function handleNameChange(e) {
+    setValueName(e.target.value);
+  }
+
+  function handleEmailChange(e) {
+    setValueEmail(e.target.value);
+  }
+
   if (!currentUser.name) {
     return <Preloader />;
   }
 
   return (
     <main className="profile">
-      <h2 className="popup__name-form_for_entry  profile__title">
-        Привет, {currentUser.name}!
-      </h2>
+      <h2 className="profile__title">Привет, {currentUser.name}!</h2>
       <form
         className="profile__form"
-        name="edit"
+        name="edit-profile"
         onSubmit={handleSubmit(onSubmit)}
       >
         <label className="profile__input-container">
@@ -63,21 +73,26 @@ function Profile(props) {
               },
               pattern: {
                 value: /^[а-яА-ЯёЁa-zA-Z\- \s]*$/,
-                message: "только латиница, кириллица, пробел или дефис",
+                message: "Только латиница, кириллица, пробел или дефис",
               },
+              onChange: handleNameChange,
+              value: valueName,
             })}
           />
         </label>
         {errors.name && <Error errors={errors.name.message} />}
         <label className="profile__input-container">
-          <p className="profile__input-text">E-mail</p>
+          <p className="profile__input-text" id="edit-email">
+            E-mail
+          </p>
           <input
             className="profile__input"
             id="edit-email"
-            name="email"
             {...register("email", {
               required: true,
               validate: (input) => isEmail(input),
+              onChange: handleEmailChange,
+              value: valueEmail,
             })}
           />
         </label>
@@ -85,13 +100,16 @@ function Profile(props) {
           <Error
             errors={
               !validator.isEmail("email") &&
-              "введены некорректные данные поля E-mail"
+              "Введены некорректные данные поля E-mail"
             }
           />
         )}
         <button
           className={
-            errors.name || errors.email
+            errors.name ||
+            errors.email ||
+            (getValues("name") === currentUser.name &&
+              getValues("email") === currentUser.email)
               ? "profile__button_inactive"
               : "profile__button"
           }
