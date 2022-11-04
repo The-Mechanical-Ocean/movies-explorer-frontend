@@ -25,7 +25,8 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function App() {
-  let location = useLocation();
+  const jwt = localStorage.getItem("jwt");
+  const location = useLocation();
   const navigate = useNavigate();
   const [isHeader, setIsHeader] = React.useState(false);
   const [isFooter, setIsFooter] = React.useState(false);
@@ -35,7 +36,7 @@ function App() {
   const [statusMessage, setStatusMessage] = React.useState("");
   const [infoTooltipOpenErr, setInfoTooltipOpenErr] = React.useState(false);
   const [errStatusMessage, setErrStatusMessage] = React.useState("");
-  
+
   useEffect(() => {
     setIsHeader(
       location.pathname === "/" ||
@@ -54,7 +55,7 @@ function App() {
   }, [location.pathname]);
 
   useEffect(() => {
-    if (localStorage.getItem("jwt")) {
+    if (jwt) {
       api
         .getProfile()
         .then((resProfile) => {
@@ -64,10 +65,10 @@ function App() {
           console.log(`Ошибка: ${err}`);
         });
     }
-  }, [localStorage.getItem("jwt")]);
+  }, [jwt]);
 
   useEffect(() => {
-    if (localStorage.getItem("jwt")) {
+    if (jwt) {
       api
         .getSavedMovies()
         .then((resSavedMovie) => {
@@ -79,7 +80,7 @@ function App() {
           console.log(`Ошибка: ${err}`);
         });
     }
-  }, [currentUser]);
+  }, [currentUser, jwt]);
 
   function closeAllPopups() {
     setInfoTooltipOpenDone(false);
@@ -166,17 +167,11 @@ function App() {
       });
   }
 
-  // function handleSaveMovie(card) {
-  //   api.saveMovie(card).then((res) => {
-  //     setSavedMovies([res, ...savedMovies]);
-  //   });
-  // }
-
   function handleLogout() {
     localStorage.clear();
     setCurrentUser({});
   }
-  
+
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -186,20 +181,20 @@ function App() {
           <Route
             path="/signup"
             element={
-              !localStorage.getItem("jwt") ? (
-                <Register onSubmit={handleOnRegister} />
-              ) : (
+              jwt ? (
                 <Navigate replace to="/movies" />
+              ) : (
+                <Register onSubmit={handleOnRegister} />
               )
             }
           />
           <Route
             path="/signin"
             element={
-              !localStorage.getItem("jwt") ? (
-                <Login onSubmit={handleOnLogin} />
-              ) : (
+              jwt ? (
                 <Navigate replace to="/movies" />
+              ) : (
+                <Login onSubmit={handleOnLogin} />
               )
             }
           />

@@ -27,7 +27,7 @@ function MoviesCard({ card, saveMovie, savedMovies, handleDeleteMovie }) {
     }
     if (location.pathname === "/movies") {
       handleDeleteMovie(savedMovies.find((i) => i.movieId === card.id));
-    }  
+    }
   }
 
   function convertHoursAndMinutes() {
@@ -39,7 +39,7 @@ function MoviesCard({ card, saveMovie, savedMovies, handleDeleteMovie }) {
     }
     return `${hours}ч ${minutes}м`;
   }
-  
+
   return (
     <div className="movie-card" key={card._id || card.movieId}>
       <div className="movie-card__text-container">

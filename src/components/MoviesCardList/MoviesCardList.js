@@ -16,7 +16,6 @@ function MoviesCardList({
   savedMovies,
 }) {
   const location = useLocation();
-
   return (
     <section className="movie-li">
       {isLoading ? (

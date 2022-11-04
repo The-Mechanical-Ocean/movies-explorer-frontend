@@ -13,16 +13,14 @@ function SavedMovies(props) {
   const [errorText, setErrorText] = React.useState("");
 
   React.useEffect(() => {
-    if (props.savedMovies.length > 0) {
-      setSearchResult(props.savedMovies);
-    }
+    setSearchResult(props.savedMovies);
   }, [props.savedMovies]);
 
-  React.useEffect(() => {
-    if (props.savedMovies.length === 0) {
-      setSearchResult(props.savedMovies);
-    }
-  }, [props.handleDeleteMovie]);
+  // React.useEffect(() => {
+  //   if (props.savedMovies.length === 0) {
+  //     setSearchResult(props.savedMovies);
+  //   }
+  // }, [props.handleDeleteMovie]);
 
   React.useEffect(() => {
     const filteredMovies = filterMovies(props.savedMovies, film, checkShorts);
@@ -50,15 +48,15 @@ function SavedMovies(props) {
     }
   }
 
-  function handleFilmChange(e) {
+  function handleSearchChange(e) {
     setFilm(e.target.value);
   }
-  
+
   return (
     <main className="movies">
       <SearchForm
         searchText={film}
-        handleFilmChange={handleFilmChange}
+        handleSearchChange={handleSearchChange}
         showShortMovies={showShortMovies}
         handleMovieSearch={handleMovieSearch}
         isShortMovie={checkShorts}

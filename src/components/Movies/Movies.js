@@ -5,19 +5,18 @@ import { api } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import { filterMovies } from "../../utils/filterMovies";
 import "./Movies.css";
+const EVENTS = ["resize", "orientationchange"];
 
 function Movies(props) {
   const [movie, setMovie] = React.useState([]);
   const [width, setWidth] = React.useState(window.innerWidth);
   const [visibleMovies, setVisibleMovies] = React.useState(getStartRows(width));
-  const events = ["resize", "orientationchange"];
   const timerId = React.useRef();
   const [searchText, setSearchText] = React.useState(getSearchStoreValue());
   const [isShortMovie, setIsShortMovie] = React.useState(
     JSON.parse(localStorage.getItem("isShortMovie")) || false
   );
   const localMovies = JSON.parse(localStorage.getItem("Movies"));
-  
   const [movies, setMovies] = React.useState(localMovies || []);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -31,12 +30,12 @@ function Movies(props) {
       }, 50);
     }
 
-    events.forEach((event) => {
+    EVENTS.forEach((event) => {
       window.addEventListener(event, handleWindowSize);
     });
 
     return () => {
-      events.forEach((event) => {
+      EVENTS.forEach((event) => {
         window.removeEventListener(event, handleWindowSize);
       });
     };
@@ -50,13 +49,16 @@ function Movies(props) {
     localStorage.setItem("isShortMovie", isShortMovie);
     const filteredMoviesInLocal =
       JSON.parse(localStorage.getItem("filteredMovies")) || [];
-      setMovie(filteredMoviesInLocal);
+    setMovie(filteredMoviesInLocal);
 
     if (filteredMoviesInLocal.length === 0 && searchText.length > 0) {
       setIsLoading(false);
       setErrorText("Ничего не найдено");
       return setError(true);
     }
+    // убрана зависимость от текста поиска для
+    // предотвращения лишнего рендеринга
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movies, isShortMovie]);
 
   function handleLoadMore() {
@@ -78,7 +80,7 @@ function Movies(props) {
   function handleSearchChange(e) {
     setSearchText(e.target.value);
   }
-  
+
   function handleSaveMovie(movie) {
     api.saveMovie(movie).then((res) => {
       props.setSavedMovies([res, ...props.savedMovies]);
@@ -95,15 +97,14 @@ function Movies(props) {
       return setError(true);
     }
     if (!localMovies) {
+      setIsLoading(true);
       getMovies()
         .then((res) => {
-          setIsLoading(false);
-          // const filtered = filterMovies(res, searchText, isShortMovie);
           localStorage.setItem("isShortMovie", JSON.stringify(isShortMovie));
           localStorage.setItem("searchText", searchText);
           setMovies(res);
           localStorage.setItem("Movies", JSON.stringify(res));
-          
+
           localStorage.setItem("searchText", searchText);
         })
         .catch(() => {
@@ -115,13 +116,13 @@ function Movies(props) {
         .finally(() => {
           setIsLoading(false);
         });
+    } else {
+      setMovies(localMovies);
+      setIsLoading(false);
+      localStorage.setItem("searchText", searchText);
     }
-    setMovies(localMovies);
-    setIsLoading(false);
-    localStorage.setItem("searchText", searchText);
-    // localStorage.setItem("isShortMovie", isShortMovie);
   }
-  
+
   return (
     <main className="movies">
       <SearchForm
