@@ -7,7 +7,6 @@ import validator from "validator";
 import isEmail from "validator/lib/isEmail";
 import "./Profile.css";
 import Preloader from "../Preloader/Preloader";
-import { getValue } from "@testing-library/user-event/dist/utils";
 
 function Profile(props) {
   const [valueName, setValueName] = React.useState("");
