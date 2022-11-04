@@ -1,11 +1,7 @@
 import React from "react";
 import "./InfoTooltip.css";
-import Preloader from "../Preloader/Preloader";
 
 function InfoTooltip(props) {
-  // if(!props.text) {
-  //   return <Preloader/>
-  // }
   return (
     <div
       className={`popup-img popup_type_image ${

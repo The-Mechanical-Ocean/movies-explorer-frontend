@@ -80,14 +80,7 @@ function Register(props) {
             },
           })}
         />
-        {errors.password ? (
-          <Error errors={errors.password.message} />
-        ) : (
-          props.profileError && <Error errors={props.profileErrText} />
-        )}
-        <span className="popup__input-error" id="password-error">
-          Что то пошло не так...
-        </span>
+        {errors.password && <Error errors={errors.password.message} />}
       </label>
       <button
         className={

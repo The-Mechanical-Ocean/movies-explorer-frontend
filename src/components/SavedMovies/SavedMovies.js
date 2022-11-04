@@ -53,6 +53,7 @@ function SavedMovies(props) {
   function handleFilmChange(e) {
     setFilm(e.target.value);
   }
+  
   return (
     <main className="movies">
       <SearchForm
@@ -61,12 +62,6 @@ function SavedMovies(props) {
         showShortMovies={showShortMovies}
         handleMovieSearch={handleMovieSearch}
         isShortMovie={checkShorts}
-
-        // handleMovieSearch={handleMovieSearch}
-        // handleFilmChange={handleFilmChange}
-        // searchText={searchText}
-        // showShortMovies={showShortMovies}
-        // isShortMovie={isShortMovie}
       />
       <MoviesCardList
         cards={searchResult}
@@ -74,14 +69,6 @@ function SavedMovies(props) {
         isLoading={props.isLoading}
         error={error}
         errorText={errorText}
-
-        // cards={movies}
-        // saveMovie={props.handleSaveMovie}
-        // visibleMoviesList={visibleMovies}
-        // handleLoadMore={handleLoadMore}
-        // isLoading={isLoading}
-        // error={error}
-        // errorText={errorText}
       />
     </main>
   );

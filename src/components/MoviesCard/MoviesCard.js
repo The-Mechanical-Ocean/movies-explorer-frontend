@@ -12,10 +12,7 @@ function MoviesCard({ card, saveMovie, savedMovies, handleDeleteMovie }) {
     ? true
     : "";
 
-  // const [isSaved, setIsSaved] = React.useState(false);
-
   function handleSave() {
-    // setIsSaved(!isSaved);
     saveMovie({
       ...card,
       image: `https://api.nomoreparties.co/${card.image.url}`,
@@ -25,13 +22,12 @@ function MoviesCard({ card, saveMovie, savedMovies, handleDeleteMovie }) {
   }
 
   function handleDelete() {
-    handleDeleteMovie(card._id);
-    // if (location.pathname === "/saved-movies") {
-    //   handleDeleteMovie(card._id);
-    // }
-    // if (location.pathname === "/movies") {
-    //   handleDeleteMovie(savedMovies.find((i) => i.movieId === card.id));
-    // }
+    if (location.pathname === "/saved-movies") {
+      handleDeleteMovie(card);
+    }
+    if (location.pathname === "/movies") {
+      handleDeleteMovie(savedMovies.find((i) => i.movieId === card.id));
+    }  
   }
 
   function convertHoursAndMinutes() {
@@ -43,13 +39,9 @@ function MoviesCard({ card, saveMovie, savedMovies, handleDeleteMovie }) {
     }
     return `${hours}ч ${minutes}м`;
   }
-  // console.log(
-  //   "savedMOvies",
-  //   savedMovies.find((i) => i._id)
-  // );
-  // console.log("savedMovies", saveMovie);
+  
   return (
-    <div className="movie-card" key={card.id || card.movieId}>
+    <div className="movie-card" key={card._id || card.movieId}>
       <div className="movie-card__text-container">
         <h2 className="movie-card__title" title={card.nameRU}>
           {card.nameRU}

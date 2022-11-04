@@ -6,5 +6,3 @@ function ProtectedRoute() {
 }
 
 export default ProtectedRoute;
-
-// {isLoggedIn ? <Route path='/movies' element={...} /> : <Navigate to='/sign-in' />}

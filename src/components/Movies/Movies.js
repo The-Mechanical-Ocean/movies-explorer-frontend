@@ -1,11 +1,13 @@
 import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import { api } from "../../utils/MainApi";
 import { getMovies } from "../../utils/MoviesApi";
 import { filterMovies } from "../../utils/filterMovies";
 import "./Movies.css";
 
 function Movies(props) {
+  const [movie, setMovie] = React.useState([]);
   const [width, setWidth] = React.useState(window.innerWidth);
   const [visibleMovies, setVisibleMovies] = React.useState(getStartRows(width));
   const events = ["resize", "orientationchange"];
@@ -15,6 +17,7 @@ function Movies(props) {
     JSON.parse(localStorage.getItem("isShortMovie")) || false
   );
   const localMovies = JSON.parse(localStorage.getItem("Movies"));
+  
   const [movies, setMovies] = React.useState(localMovies || []);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
@@ -39,6 +42,23 @@ function Movies(props) {
     };
   }, []);
 
+  React.useEffect(() => {
+    setError(false);
+    const filtered = filterMovies(movies, searchText, isShortMovie);
+    const moviesToDisplay = filtered;
+    localStorage.setItem("filteredMovies", JSON.stringify(moviesToDisplay));
+    localStorage.setItem("isShortMovie", isShortMovie);
+    const filteredMoviesInLocal =
+      JSON.parse(localStorage.getItem("filteredMovies")) || [];
+      setMovie(filteredMoviesInLocal);
+
+    if (filteredMoviesInLocal.length === 0 && searchText.length > 0) {
+      setIsLoading(false);
+      setErrorText("Ничего не найдено");
+      return setError(true);
+    }
+  }, [movies, isShortMovie]);
+
   function handleLoadMore() {
     return setVisibleMovies((Movies) => Movies + addLoadMovie(width));
   }
@@ -55,8 +75,14 @@ function Movies(props) {
     return searchStoreValue;
   }
 
-  function handleFilmChange(e) {
+  function handleSearchChange(e) {
     setSearchText(e.target.value);
+  }
+  
+  function handleSaveMovie(movie) {
+    api.saveMovie(movie).then((res) => {
+      props.setSavedMovies([res, ...props.savedMovies]);
+    });
   }
 
   function handleMovieSearch(e) {
@@ -75,8 +101,10 @@ function Movies(props) {
           // const filtered = filterMovies(res, searchText, isShortMovie);
           localStorage.setItem("isShortMovie", JSON.stringify(isShortMovie));
           localStorage.setItem("searchText", searchText);
-          localStorage.setItem("Movies", JSON.stringify(res));
           setMovies(res);
+          localStorage.setItem("Movies", JSON.stringify(res));
+          
+          localStorage.setItem("searchText", searchText);
         })
         .catch(() => {
           setError(true);
@@ -93,46 +121,26 @@ function Movies(props) {
     localStorage.setItem("searchText", searchText);
     // localStorage.setItem("isShortMovie", isShortMovie);
   }
-  // console.log(setMovies);
-  React.useEffect(() => {
-    // debugger;
-    // setError(false);
-    const moviesToDisplay = filterMovies(movies, searchText, isShortMovie);
-    localStorage.setItem("filteredMovies", JSON.stringify(moviesToDisplay));
-    localStorage.setItem("isShortMovie", isShortMovie);
-    const filteredMoviesInLocal =
-      JSON.parse(localStorage.getItem("filteredMovies")) || [];
-    clearTimeout(timerId.current);
-    timerId.current = setTimeout(() => {
-      setMovies(filteredMoviesInLocal);
-    }, 20);
-    // setMovies(filteredMoviesInLocal);
-
-    if (filteredMoviesInLocal.length === 0 && searchText.length > 0) {
-      setIsLoading(false);
-      setErrorText("Ничего не найдено");
-      return setError(true);
-      // setError(true);
-    }
-  }, [movies, searchText, isShortMovie]);
+  
   return (
     <main className="movies">
       <SearchForm
         handleMovieSearch={handleMovieSearch}
-        handleFilmChange={handleFilmChange}
+        handleSearchChange={handleSearchChange}
         searchText={searchText}
         showShortMovies={showShortMovies}
         isShortMovie={isShortMovie}
       />
       <MoviesCardList
-        cards={movies}
-        saveMovie={props.handleSaveMovie}
+        cards={movie}
+        saveMovie={handleSaveMovie}
         visibleMoviesList={visibleMovies}
         handleLoadMore={handleLoadMore}
         isLoading={isLoading}
         error={error}
         errorText={errorText}
         savedMovies={props.savedMovies}
+        handleDeleteMovie={props.handleDeleteMovie}
       />
     </main>
   );

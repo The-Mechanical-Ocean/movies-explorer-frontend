@@ -59,11 +59,7 @@ function Login(props) {
             },
           })}
         />
-        {errors.password ? (
-          <Error errors={errors.password.message} />
-        ) : (
-          props.profileError && <Error errors={props.profileErrText} />
-        )}
+        {errors.password && <Error errors={errors.password.message} />}
       </label>
       <button
         className={

@@ -19,13 +19,10 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import PageNotFound from "../PageNotFound/PageNotFound";
-
 import { api } from "../../utils/MainApi";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
-// import { getMovies } from "../../utils/MoviesApi";
-// import { filterMovies } from "../../utils/filterMovies";
 
 function App() {
   let location = useLocation();
@@ -38,9 +35,7 @@ function App() {
   const [statusMessage, setStatusMessage] = React.useState("");
   const [infoTooltipOpenErr, setInfoTooltipOpenErr] = React.useState(false);
   const [errStatusMessage, setErrStatusMessage] = React.useState("");
-  // const [movies, setMovies] = React.useState([]);
-  // const [localMovies, setLocalMovies] = React.useState(JSON.parse(localStorage.getItem('allMovies') || []))
-
+  
   useEffect(() => {
     setIsHeader(
       location.pathname === "/" ||
@@ -105,7 +100,7 @@ function App() {
       })
       .catch((err) => {
         if (err === 409) {
-          setErrStatusMessage("пользователь с этим e-mail уже существует");
+          setErrStatusMessage("Пользователь с этим e-mail уже существует");
           setInfoTooltipOpenErr(true);
         }
         if (err === 500) {
@@ -135,11 +130,11 @@ function App() {
       });
   }
 
-  function handleDeleteMovie(movieId) {
+  function handleDeleteMovie(card) {
     api
-      .deleteMovie(movieId)
+      .deleteMovie(card._id)
       .then(() => {
-        setSavedMovies((state) => state.filter((c) => c._id !== movieId));
+        setSavedMovies((state) => state.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
         if (err === 500) {
@@ -160,7 +155,7 @@ function App() {
       })
       .catch((err) => {
         if (err === 409) {
-          setErrStatusMessage("пользователь с этим e-mail уже существует");
+          setErrStatusMessage("Пользователь с этим e-mail уже существует");
           setInfoTooltipOpenErr(true);
         }
         if (err === 500) {
@@ -171,41 +166,17 @@ function App() {
       });
   }
 
-  // function handleCheckToken() {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     checkToken(jwt)
-  //     .then((res) => {
-  //       if (res) {
-  //         console.log('token: success')
-  //       }
-  //     })
-  //     .catch((err) => {console.log(`Ошибка: ${err}`)})
-  //   }
-  // }
-
-  // function handleMovieSearch(searchText, isShortMovie) {
-  //   getMovies().then((res) => {
-  //     const filtered = filterMovies(res, searchText, isShortMovie);
-  //     localStorage.setItem("allMovies", JSON.stringify(filtered));
-  //     setMovies(filtered);
-  //     localStorage.setItem('searchText', )
+  // function handleSaveMovie(card) {
+  //   api.saveMovie(card).then((res) => {
+  //     setSavedMovies([res, ...savedMovies]);
   //   });
   // }
 
-  function handleSaveMovie(card) {
-    api.saveMovie(card).then((res) => {
-      setSavedMovies([res, ...savedMovies]);
-    });
-  }
-
   function handleLogout() {
     localStorage.clear();
-    // localStorage.removeItem('jwt');
-    // setLoggedIn(false);
     setCurrentUser({});
   }
-
+  
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -237,10 +208,9 @@ function App() {
               path="/movies"
               element={
                 <Movies
-                  // handleMovieSearch={handleMovieSearch}
-                  // cards={movies}
-                  handleSaveMovie={handleSaveMovie}
                   savedMovies={savedMovies}
+                  setSavedMovies={setSavedMovies}
+                  handleDeleteMovie={handleDeleteMovie}
                 />
               }
             />
@@ -284,5 +254,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
