@@ -143,6 +143,7 @@ function Movies(props) {
         })
         .finally(() => {
           setIsLoading(false);
+          props.handleCheckToken();
         });
     } else {
       setMovies(localMovies);
