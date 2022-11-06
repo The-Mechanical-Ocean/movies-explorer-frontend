@@ -72,6 +72,7 @@ function Register(props) {
         <input
           className="popup__input popup__input_for_entry popup__input_type_password"
           id="password"
+          type="password"
           {...register("password", {
             required: true,
             minLength: {
@@ -94,7 +95,7 @@ function Register(props) {
             : "popup__button-save popup__button-save_for_entry"
         }
         type="submit"
-        disabled={formState.isSubmitting}
+        disabled={!formState.isValid}
       >
         Зарегистрироваться
       </button>

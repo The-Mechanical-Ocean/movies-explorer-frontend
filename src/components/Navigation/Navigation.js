@@ -39,155 +39,160 @@ function Navigation() {
 
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={
-          <nav
-            className={
-              location.pathname === "/" ? "navigation-main" : "navigation"
-            }
-          >
-            <Link
-              className="navigation-main__text navigation-main__link"
-              to="/signup"
-            >
-              Регистрация
-            </Link>
-            <Link
-              className="navigation-main__link_button"
-              to="/signin"
-              type="button"
-            >
-              <p className="navigation-main__text_button">Войти</p>
-            </Link>
-          </nav>
-        }
-      ></Route>
-      {["/movies", "/saved-movies", "/profile"].map((path, index) => {
-        return (
-          <Route
-            path={path}
-            element={
-              <>
-                <div className="navigation navigation_margin navigation_none">
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "navigation__link navigation__link_active"
-                        : "navigation__link"
-                    }
-                    to="/movies"
-                  >
-                    Фильмы
-                  </NavLink>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "navigation__link navigation__link_active"
-                        : "navigation__link"
-                    }
-                    to="/saved-movies"
-                  >
-                    Сохранённые фильмы
-                  </NavLink>
-                  <NavLink
-                    className={({ isActive }) =>
-                      isActive
-                        ? "navigation__link navigation__link_active"
-                        : "navigation__link"
-                    }
-                    to="/profile"
-                  >
-                    <p className="navigation__text">Аккаунт</p>
-                    <img
-                      className="navigation__icon"
-                      alt="profile img"
-                      src={profileIcon}
-                    />
-                  </NavLink>
-                </div>
-                <button
-                  onClick={handleMenu}
-                  className={"navigation__burger-menu"}
+      {!localStorage.getItem("jwt") && (
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <nav
+                className={
+                  location.pathname === "/" ? "navigation-main" : "navigation"
+                }
+              >
+                <Link
+                  className="navigation-main__text navigation-main__link"
+                  to="/signup"
+                >
+                  Регистрация
+                </Link>
+                <Link
+                  className="navigation-main__link_button"
+                  to="/signin"
                   type="button"
                 >
-                  <span
-                    className={`navigation__burger-line ${
-                      menu && "navigation__burger-line_active"
-                    }`}
-                  ></span>
-                  <span
-                    className={`navigation__burger-line ${
-                      menu && "navigation__burger-line_active"
-                    }`}
-                  ></span>
-                  <span
-                    className={`navigation__burger-line ${
-                      menu && "navigation__burger-line_active"
-                    }`}
-                  ></span>
-                </button>
-                {menu && (
-                  <>
-                    <div className="navigation__burger-shadow"></div>
-                    <div className="navigation__burger-container">
-                      <div className="navigation__link-container">
+                  <p className="navigation-main__text_button">Войти</p>
+                </Link>
+              </nav>
+            </>
+          }
+        ></Route>
+      )}
+      {localStorage.getItem("jwt") &&
+        ["/movies", "/saved-movies", "/profile", "/"].map((path, index) => {
+          return (
+            <Route
+              path={path}
+              element={
+                <>
+                  <div className="navigation navigation_margin navigation_none">
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "navigation__link navigation__link_active"
+                          : "navigation__link"
+                      }
+                      to="/movies"
+                    >
+                      Фильмы
+                    </NavLink>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "navigation__link navigation__link_active"
+                          : "navigation__link"
+                      }
+                      to="/saved-movies"
+                    >
+                      Сохранённые фильмы
+                    </NavLink>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "navigation__link navigation__link_active"
+                          : "navigation__link"
+                      }
+                      to="/profile"
+                    >
+                      <p className="navigation__text">Аккаунт</p>
+                      <img
+                        className="navigation__icon"
+                        alt="profile img"
+                        src={profileIcon}
+                      />
+                    </NavLink>
+                  </div>
+                  <button
+                    onClick={handleMenu}
+                    className={"navigation__burger-menu"}
+                    type="button"
+                  >
+                    <span
+                      className={`navigation__burger-line ${
+                        menu && "navigation__burger-line_active"
+                      }`}
+                    ></span>
+                    <span
+                      className={`navigation__burger-line ${
+                        menu && "navigation__burger-line_active"
+                      }`}
+                    ></span>
+                    <span
+                      className={`navigation__burger-line ${
+                        menu && "navigation__burger-line_active"
+                      }`}
+                    ></span>
+                  </button>
+                  {menu && (
+                    <>
+                      <div className="navigation__burger-shadow"></div>
+                      <div className="navigation__burger-container">
+                        <div className="navigation__link-container">
+                          <NavLink
+                            className={({ isActive }) =>
+                              isActive
+                                ? "navigation__panel-link navigation__panel-link_margin_top navigation__panel-link_active"
+                                : "navigation__panel-link navigation__panel-link_margin_top"
+                            }
+                            to="/"
+                          >
+                            Главная
+                          </NavLink>
+                          <NavLink
+                            className={({ isActive }) =>
+                              isActive
+                                ? "navigation__panel-link navigation__panel-link_active"
+                                : "navigation__panel-link"
+                            }
+                            to="/movies"
+                          >
+                            Фильмы
+                          </NavLink>
+                          <NavLink
+                            className={({ isActive }) =>
+                              isActive
+                                ? "navigation__panel-link navigation__panel-link_active"
+                                : "navigation__panel-link"
+                            }
+                            to="/saved-movies"
+                          >
+                            Сохранённые фильмы
+                          </NavLink>
+                        </div>
                         <NavLink
                           className={({ isActive }) =>
                             isActive
-                              ? "navigation__panel-link navigation__panel-link_margin_top navigation__panel-link_active"
-                              : "navigation__panel-link navigation__panel-link_margin_top"
+                              ? "navigation__panel-link navigation__panel-link_margin_bottom navigation__panel-link_active"
+                              : "navigation__panel-link navigation__panel-link_margin_bottom"
                           }
-                          to="/"
+                          to="/profile"
                         >
-                          Главная
-                        </NavLink>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? "navigation__panel-link navigation__panel-link_active"
-                              : "navigation__panel-link"
-                          }
-                          to="/movies"
-                        >
-                          Фильмы
-                        </NavLink>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? "navigation__panel-link navigation__panel-link_active"
-                              : "navigation__panel-link"
-                          }
-                          to="/saved-movies"
-                        >
-                          Сохранённые фильмы
+                          <p className="navigation__text">Аккаунт</p>
+                          <img
+                            className="navigation__icon"
+                            alt="profile icon"
+                            src={profileIcon}
+                          />
                         </NavLink>
                       </div>
-                      <NavLink
-                        className={({ isActive }) =>
-                          isActive
-                            ? "navigation__panel-link navigation__panel-link_margin_bottom navigation__panel-link_active"
-                            : "navigation__panel-link navigation__panel-link_margin_bottom"
-                        }
-                        to="/profile"
-                      >
-                        <p className="navigation__text">Аккаунт</p>
-                        <img
-                          className="navigation__icon"
-                          alt="profile icon"
-                          src={profileIcon}
-                        />
-                      </NavLink>
-                    </div>
-                  </>
-                )}
-              </>
-            }
-            key={index}
-          ></Route>
-        );
-      })}
+                    </>
+                  )}
+                </>
+              }
+              key={index}
+            ></Route>
+          );
+        })}
     </Routes>
   );
 }

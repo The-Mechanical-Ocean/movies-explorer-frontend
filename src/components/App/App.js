@@ -55,6 +55,7 @@ function App() {
   }, [location.pathname]);
 
   useEffect(() => {
+    handleCheckToken();
     if (jwt) {
       api
         .getProfile()
@@ -62,6 +63,7 @@ function App() {
           setCurrentUser(resProfile);
         })
         .catch((err) => {
+          setInfoTooltipOpenErr(true);
           console.log(`Ошибка: ${err}`);
         });
     }
@@ -95,7 +97,7 @@ function App() {
           setStatusMessage("Вы успешно зарегистрировались!");
           setInfoTooltipOpenDone(true);
           setCurrentUser(res);
-          navigate("/signin");
+          handleOnLogin(password, email);
         }
       })
       .catch((err) => {
@@ -122,6 +124,14 @@ function App() {
         }
       })
       .catch((err) => {
+        if (err === 401) {
+          setErrStatusMessage("Пользователь с этим e-mail не зарегистрирован");
+          setInfoTooltipOpenErr(true);
+        }
+        if (err === 409) {
+          setErrStatusMessage("Пользователь с этим e-mail уже существует");
+          setInfoTooltipOpenErr(true);
+        }
         if (err === 500) {
           setErrStatusMessage("Ошибка сервера");
           setInfoTooltipOpenErr(true);
@@ -169,6 +179,25 @@ function App() {
   function handleLogout() {
     localStorage.clear();
     setCurrentUser({});
+    navigate("/");
+  }
+
+  function handleCheckToken() {
+    if (jwt) {
+      api
+        .checkToken(jwt)
+        .then((res) => {
+          if (res) {
+            console.log("success");
+          }
+        })
+        .catch((err) => {
+          setErrStatusMessage("Ошибка авторизации");
+          setInfoTooltipOpenErr(true);
+          handleLogout();
+          console.log(`Ошибка: ${err}`);
+        });
+    }
   }
 
   return (
@@ -205,6 +234,8 @@ function App() {
                   savedMovies={savedMovies}
                   setSavedMovies={setSavedMovies}
                   handleDeleteMovie={handleDeleteMovie}
+                  handleLogout={handleLogout}
+                  handleCheckToken={handleCheckToken}
                 />
               }
             />

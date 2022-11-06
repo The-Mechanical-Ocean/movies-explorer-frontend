@@ -102,6 +102,13 @@ class MainApi {
       headers: this._headers,
     }).then(this._checkResponse);
   }
+
+  checkToken(token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
 }
 
 export const api = new MainApi({

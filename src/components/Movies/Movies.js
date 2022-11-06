@@ -106,7 +106,11 @@ function Movies(props) {
         props.setSavedMovies([res, ...props.savedMovies]);
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`);
+        if (err === 401) {
+          props.handleCheckToken();
+          props.handleLogout();
+          console.log(`Ошибка: ${err}`);
+        }
       });
   }
 
