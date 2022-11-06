@@ -111,7 +111,8 @@ function Movies(props) {
           props.handleLogout();
           console.log(`Ошибка: ${err}`);
         }
-      });
+      })
+      .finally(() => props.handleCheckToken());
   }
 
   function handleMovieSearch(e) {
