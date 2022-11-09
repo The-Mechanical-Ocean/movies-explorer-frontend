@@ -132,8 +132,6 @@ function Movies(props) {
           localStorage.setItem("searchText", searchText);
           setMovies(res);
           localStorage.setItem("Movies", JSON.stringify(res));
-
-          localStorage.setItem("searchText", searchText);
         })
         .catch(() => {
           setError(true);
