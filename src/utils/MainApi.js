@@ -112,5 +112,5 @@ class MainApi {
 }
 
 export const api = new MainApi({
-  baseUrl: "https://api.movies-explorer-t-m-o.nomoredomains.xyz",
+  baseUrl: "https://api.movies.alexkudrin.com",
 });

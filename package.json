@@ -15,7 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dep": "npm run build && scp -r ./build/* praktikum@51.250.93.79:/home/praktikum/movies-frontend",
+    "dep": "npm run build && scp -r ./build/* praktikum@51.250.86.214:/home/praktikum/movies-frontend",
     "predeploy": "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
