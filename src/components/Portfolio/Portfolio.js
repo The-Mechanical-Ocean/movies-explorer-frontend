@@ -39,15 +39,12 @@ function Portfolio() {
         <li className="portfolio__li-container">
           <a
             className="portfolio__link"
-            href="https://the-mechanical-ocean.nomoredomains.sbs"
+            href="https://mesto.alexkudrin.com"
             target="_ blank"
           >
             Одностраничное приложение
           </a>
-          <a
-            href="https://the-mechanical-ocean.nomoredomains.sbs"
-            target="_ blank"
-          >
+          <a href="https://mesto.alexkudrin.com" target="_ blank">
             <div className="portfolio__link-image"></div>
           </a>
         </li>
