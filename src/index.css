@@ -1,0 +1,11 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/font/font.css);
+
+.body {
+  background-color: #202020;
+}
+
+#root {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #202020;
+}
